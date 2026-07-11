@@ -82,3 +82,22 @@ function showResult() {
         "\nResult : " + result
     );
         }
+function showResult() {
+
+    let totalQuestions = 25;
+    let percentage = (score / totalQuestions) * 100;
+
+    let resultText = "";
+
+    if (percentage >= 50) {
+        resultText = "🎉 PASS";
+    } else {
+        resultText = "❌ FAIL";
+    }
+
+    document.getElementById("finalResult").innerHTML =
+    "<h2>Your Result</h2>" +
+    "<p><b>Score:</b> " + score + " / " + totalQuestions + "</p>" +
+    "<p><b>Percentage:</b> " + percentage.toFixed(2) + "%</p>" +
+    "<p><b>Status:</b> " + resultText + "</p>";
+}

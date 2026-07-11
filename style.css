@@ -95,3 +95,22 @@ transition:0.3s;
 background:#1d4ed8;
 transform:scale(1.02);
 }
+/* Website Creator */
+
+.creator{
+text-align:center;
+padding:20px;
+margin:30px;
+background:#ffffff;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.creator h3{
+color:#2563eb;
+}
+
+.creator p{
+font-size:18px;
+font-weight:bold;
+}

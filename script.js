@@ -61,3 +61,24 @@ setInterval(function () {
     }
 
 }, 1000);
+// Show Final Result
+function showResult() {
+
+    let totalQuestions = 25;
+    let percentage = (score / totalQuestions) * 100;
+
+    let result = "";
+
+    if (percentage >= 50) {
+        result = "🎉 PASS";
+    } else {
+        result = "❌ FAIL";
+    }
+
+    alert(
+        "Quiz Finished!\n\n" +
+        "Score : " + score + "/" + totalQuestions +
+        "\nPercentage : " + percentage.toFixed(2) + "%" +
+        "\nResult : " + result
+    );
+        }

@@ -1,103 +1,97 @@
-let score = 0;
-
-function checkAnswer(answer, correct) {
-    if (answer === correct) {
-        score++;
-        alert("Correct Answer!");
-    } else {
-        alert("Wrong Answer!");
-    }
-
-    localStorage.setItem("score", score);
-}
-// Quiz Script
+// Quiz Website Script
+// Created by Shambhu Khatri
 
 let score = 0;
-let answered = false;
+let answeredQuestions = 0;
+const totalQuestions = 25;
 
 // Check Answer
-function checkAnswer(button, correct) {
+function checkAnswer(button, isCorrect) {
 
-    if (answered) return;
+    // एउटै प्रश्नमा दोहोर्याएर click हुन नदिने
+    const parent = button.parentElement;
 
-    answered = true;
-
-    if (correct) {
-        button.style.background = "green";
-        score++;
-    } else {
-        button.style.background = "red";
+    if (parent.getAttribute("data-answered") === "true") {
+        return;
     }
 
-    document.getElementById("score").innerHTML = score;
+    parent.setAttribute("data-answered", "true");
+
+    const buttons = parent.querySelectorAll("button");
+
+    buttons.forEach(btn => {
+        btn.disabled = true;
+    });
+
+    if (isCorrect) {
+        button.style.backgroundColor = "green";
+        score++;
+    } else {
+        button.style.backgroundColor = "red";
+
+        buttons.forEach(btn => {
+            if (btn.getAttribute("onclick").includes("true")) {
+                btn.style.backgroundColor = "green";
+            }
+        });
+    }
+
+    answeredQuestions++;
+
+    // Score Update
+    const scoreBox = document.getElementById("score");
+    if (scoreBox) {
+        scoreBox.innerHTML = score;
+    }
 }
 
-// Next Question
-function nextQuestion() {
-    alert("More questions will be added in the next update.");
-    answered = false;
+// Show Result
+function showResult() {
+
+    let percentage = (score / totalQuestions) * 100;
+
+    let status = "";
+
+    if (percentage >= 50) {
+        status = "✅ PASS";
+    } else {
+        status = "❌ FAIL";
+    }
+
+    document.getElementById("finalResult").innerHTML = `
+        <h2>Quiz Result</h2>
+        <p><b>Score:</b> ${score} / ${totalQuestions}</p>
+        <p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
+        <p><b>Status:</b> ${status}</p>
+    `;
 }
 
 // Restart Quiz
 function restartQuiz() {
-    score = 0;
-    answered = false;
-    document.getElementById("score").innerHTML = score;
+    location.reload();
 }
 
 // Timer
-let time = 60;
+let timeLeft = 1500; // 25 Minutes
 
-setInterval(function () {
+function updateTimer() {
 
-    if (time > 0) {
-        time--;
-    }
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
 
     let timer = document.getElementById("timer");
 
     if (timer) {
-        timer.innerHTML = time + " sec";
+        timer.innerHTML =
+            minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
     }
 
-}, 1000);
-// Show Final Result
-function showResult() {
-
-    let totalQuestions = 25;
-    let percentage = (score / totalQuestions) * 100;
-
-    let result = "";
-
-    if (percentage >= 50) {
-        result = "🎉 PASS";
-    } else {
-        result = "❌ FAIL";
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        showResult();
     }
 
-    alert(
-        "Quiz Finished!\n\n" +
-        "Score : " + score + "/" + totalQuestions +
-        "\nPercentage : " + percentage.toFixed(2) + "%" +
-        "\nResult : " + result
-    );
-        }
-function showResult() {
-
-    let totalQuestions = 25;
-    let percentage = (score / totalQuestions) * 100;
-
-    let resultText = "";
-
-    if (percentage >= 50) {
-        resultText = "🎉 PASS";
-    } else {
-        resultText = "❌ FAIL";
-    }
-
-    document.getElementById("finalResult").innerHTML =
-    "<h2>Your Result</h2>" +
-    "<p><b>Score:</b> " + score + " / " + totalQuestions + "</p>" +
-    "<p><b>Percentage:</b> " + percentage.toFixed(2) + "%</p>" +
-    "<p><b>Status:</b> " + resultText + "</p>";
+    timeLeft--;
 }
+
+const timerInterval = setInterval(updateTimer, 1000);

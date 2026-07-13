@@ -1,42 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Science Quiz</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <header>
-<h1>Science Quiz</h1>
+
+<h1>🔬 Science Quiz</h1>
 
 <nav>
+
 <a href="index.html">Home</a>
 <a href="about.html">About Me</a>
 <a href="quiz.html">Computer Quiz</a>
 <a href="science.html">Science Quiz</a>
 <a href="contact.html">Contact</a>
+
 </nav>
+
+</header>
 
 <section class="hero">
 
-<h2>Science Quiz</h2>
+<h2>Science Quiz Challenge</h2>
 
-<p>Question 1</p>
+<p>Answer all 15 questions and check your final score.</p>
 
-<p>Water boils at?</p>
+<p>
+Score:
+<b><span id="score">0</span></b> / 15
+</p>
 
-<button onclick="checkAnswer('100','100')">100°C</button>
-
-<button onclick="checkAnswer('90','100')">90°C</button>
-
-<button onclick="checkAnswer('80','100')">80°C</button>
-
-<button onclick="checkAnswer('70','100')">70°C</button>
+<p>
+Time Left:
+<b><span id="timer">15:00</span></b>
+</p>
 
 </section>
+
+<div class="question">
+
+<h3>Question 1</h3>
+
+<p>What is the chemical formula of water?</p>
+
+<button onclick="checkAnswer(this,true)">H₂O</button>
+<button onclick="checkAnswer(this,false)">CO₂</button>
+<button onclick="checkAnswer(this,false)">NaCl</button>
+<button onclick="checkAnswer(this,false)">O₂</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 2</h3>
+
+<p>Which planet is known as the Red Planet?</p>
+
+<button onclick="checkAnswer(this,false)">Earth</button>
+<button onclick="checkAnswer(this,true)">Mars</button>
+<button onclick="checkAnswer(this,false)">Jupiter</button>
+<button onclick="checkAnswer(this,false)">Venus</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 3</h3>
+
+<p>Which gas do plants absorb?</p>
+
+<button onclick="checkAnswer(this,true)">Carbon Dioxide</button>
+<button onclick="checkAnswer(this,false)">Oxygen</button>
+<button onclick="checkAnswer(this,false)">Nitrogen</button>
+<button onclick="checkAnswer(this,false)">Hydrogen</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 4</h3>
+
+<p>What is the nearest star to Earth?</p>
+
+<button onclick="checkAnswer(this,true)">Sun</button>
+<button onclick="checkAnswer(this,false)">Moon</button>
+<button onclick="checkAnswer(this,false)">Mars</button>
+<button onclick="checkAnswer(this,false)">Venus</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 5</h3>
+
+<p>Which vitamin is mainly obtained from sunlight?</p>
+
+<button onclick="checkAnswer(this,true)">Vitamin D</button>
+<button onclick="checkAnswer(this,false)">Vitamin A</button>
+<button onclick="checkAnswer(this,false)">Vitamin C</button>
+<button onclick="checkAnswer(this,false)">Vitamin B</button>
+
+</div>
+
+<hr>
+<div class="question">
+
+<h3>Question 6</h3>
+
+<p>Which gas is essential for human breathing?</p>
+
+<button onclick="checkAnswer(this,true)">Oxygen</button>
+<button onclick="checkAnswer(this,false)">Carbon Dioxide</button>
+<button onclick="checkAnswer(this,false)">Nitrogen</button>
+<button onclick="checkAnswer(this,false)">Hydrogen</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 7</h3>
+
+<p>How many bones are there in an adult human body?</p>
+
+<button onclick="checkAnswer(this,true)">206</button>
+<button onclick="checkAnswer(this,false)">208</button>
+<button onclick="checkAnswer(this,false)">210</button>
+<button onclick="checkAnswer(this,false)">212</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 8</h3>
+
+<p>Which planet is the largest in our Solar System?</p>
+
+<button onclick="checkAnswer(this,false)">Earth</button>
+<button onclick="checkAnswer(this,false)">Mars</button>
+<button onclick="checkAnswer(this,true)">Jupiter</button>
+<button onclick="checkAnswer(this,false)">Saturn</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 9</h3>
+
+<p>What is the boiling point of water at normal pressure?</p>
+
+<button onclick="checkAnswer(this,false)">50°C</button>
+<button onclick="checkAnswer(this,false)">75°C</button>
+<button onclick="checkAnswer(this,true)">100°C</button>
+<button onclick="checkAnswer(this,false)">120°C</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 10</h3>
+
+<p>Which blood group is called the universal donor?</p>
+
+<button onclick="checkAnswer(this,true)">O Negative</button>
+<button onclick="checkAnswer(this,false)">A Positive</button>
+<button onclick="checkAnswer(this,false)">B Positive</button>
+<button onclick="checkAnswer(this,false)">AB Positive</button>
+
+</div>
+
+<hr>
+<div class="question">
+
+<h3>Question 11</h3>
+
+<p>Which organ pumps blood throughout the human body?</p>
+
+<button onclick="checkAnswer(this,false)">Lungs</button>
+<button onclick="checkAnswer(this,true)">Heart</button>
+<button onclick="checkAnswer(this,false)">Kidney</button>
+<button onclick="checkAnswer(this,false)">Liver</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 12</h3>
+
+<p>Which planet is closest to the Sun?</p>
+
+<button onclick="checkAnswer(this,true)">Mercury</button>
+<button onclick="checkAnswer(this,false)">Venus</button>
+<button onclick="checkAnswer(this,false)">Earth</button>
+<button onclick="checkAnswer(this,false)">Mars</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 13</h3>
+
+<p>What is the freezing point of water?</p>
+
+<button onclick="checkAnswer(this,true)">0°C</button>
+<button onclick="checkAnswer(this,false)">10°C</button>
+<button onclick="checkAnswer(this,false)">20°C</button>
+<button onclick="checkAnswer(this,false)">50°C</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 14</h3>
+
+<p>Which part of the plant absorbs water?</p>
+
+<button onclick="checkAnswer(this,true)">Root</button>
+<button onclick="checkAnswer(this,false)">Leaf</button>
+<button onclick="checkAnswer(this,false)">Flower</button>
+<button onclick="checkAnswer(this,false)">Stem</button>
+
+</div>
+
+<hr>
+
+<div class="question">
+
+<h3>Question 15</h3>
+
+<p>Which gas is the most abundant in Earth's atmosphere?</p>
+
+<button onclick="checkAnswer(this,false)">Oxygen</button>
+<button onclick="checkAnswer(this,true)">Nitrogen</button>
+<button onclick="checkAnswer(this,false)">Carbon Dioxide</button>
+<button onclick="checkAnswer(this,false)">Hydrogen</button>
+
+</div>
+
+<hr>
+
+<h2 style="font-size:38px;">📊 Science Quiz Result</h2>
+
+<p style="font-size:28px;">
+Score:
+<b><span id="score">0</span></b> / 15
+</p>
+
+<p style="font-size:28px;">
+Time Left:
+<b><span id="timer">15:00</span></b>
+</p>
+
+<br>
+
+<button class="btn" onclick="showResult()"
+style="font-size:24px;padding:18px 40px;">
+📊 Show Result
+</button>
+
+<button class="btn" onclick="restartQuiz()"
+style="font-size:24px;padding:18px 40px;">
+🔄 Restart Quiz
+</button>
+
+<br><br>
+
+<div id="finalResult"
+style="font-size:30px;
+font-weight:bold;
+padding:25px;
+background:white;
+color:black;
+border-radius:15px;
+max-width:700px;
+margin:auto;">
+</div>
 
 <script src="script.js"></script>
 

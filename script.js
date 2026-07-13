@@ -1,97 +1,160 @@
-// Quiz Website Script
-// Created by Shambhu Khatri
+// ===============================
+// Computer Science Learning Website
+// Created by Shambhu Khatri (Suprim)
+// ===============================
 
 let score = 0;
-let answeredQuestions = 0;
-const totalQuestions = 25;
+let answered = 0;
 
-// Check Answer
-function checkAnswer(button, isCorrect) {
+const scoreElement = document.getElementById("score");
+const resultElement = document.getElementById("finalResult");
 
-    // एउटै प्रश्नमा दोहोर्याएर click हुन नदिने
-    const parent = button.parentElement;
+// Answer Checking Function
+function checkAnswer(button, correct) {
 
-    if (parent.getAttribute("data-answered") === "true") {
+    const question = button.parentElement;
+
+    // Prevent answering same question twice
+    if (question.getAttribute("data-answered") === "true") {
         return;
     }
 
-    parent.setAttribute("data-answered", "true");
+    question.setAttribute("data-answered", "true");
+    answered++;
 
-    const buttons = parent.querySelectorAll("button");
+    const buttons = question.querySelectorAll("button");
 
     buttons.forEach(btn => {
+
         btn.disabled = true;
+
+        if (btn.getAttribute("onclick").includes("true")) {
+            btn.style.background = "#22c55e";
+            btn.style.color = "white";
+        }
+
     });
 
-    if (isCorrect) {
-        button.style.backgroundColor = "green";
+    if (correct) {
         score++;
+        button.style.background = "#22c55e";
+        button.style.color = "white";
     } else {
-        button.style.backgroundColor = "red";
-
-        buttons.forEach(btn => {
-            if (btn.getAttribute("onclick").includes("true")) {
-                btn.style.backgroundColor = "green";
-            }
-        });
+        button.style.background = "#ef4444";
+        button.style.color = "white";
     }
 
-    answeredQuestions++;
-
-    // Score Update
-    const scoreBox = document.getElementById("score");
-    if (scoreBox) {
-        scoreBox.innerHTML = score;
+    if (scoreElement) {
+        scoreElement.innerHTML = score;
     }
+
 }
+// ===============================
+// Show Final Result
+// ===============================
 
-// Show Result
 function showResult() {
+
+    let totalQuestions = document.querySelectorAll(".question").length;
 
     let percentage = (score / totalQuestions) * 100;
 
+    let grade = "";
     let status = "";
 
-    if (percentage >= 50) {
-        status = "✅ PASS";
-    } else {
-        status = "❌ FAIL";
+    if (percentage >= 90) {
+        grade = "A+";
+        status = "🎉 Outstanding!";
+    }
+    else if (percentage >= 80) {
+        grade = "A";
+        status = "🎉 Excellent!";
+    }
+    else if (percentage >= 70) {
+        grade = "B";
+        status = "✅ Very Good!";
+    }
+    else if (percentage >= 60) {
+        grade = "C";
+        status = "👍 Good!";
+    }
+    else if (percentage >= 40) {
+        grade = "D";
+        status = "🙂 Pass";
+    }
+    else {
+        grade = "F";
+        status = "❌ Fail";
     }
 
-    document.getElementById("finalResult").innerHTML = `
-        <h2>Quiz Result</h2>
-        <p><b>Score:</b> ${score} / ${totalQuestions}</p>
-        <p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
-        <p><b>Status:</b> ${status}</p>
-    `;
-}
+    resultElement.innerHTML = `
+    <h2>🏆 Quiz Result</h2>
 
+    <br>
+
+    <p><b>Correct Answers:</b> ${score}</p>
+
+    <p><b>Total Questions:</b> ${totalQuestions}</p>
+
+    <p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
+
+    <p><b>Grade:</b> ${grade}</p>
+
+    <h2>${status}</h2>
+    `;
+
+}
+// ===============================
 // Restart Quiz
+// ===============================
+
 function restartQuiz() {
     location.reload();
 }
 
+// ===============================
 // Timer
-let timeLeft = 1500; // 25 Minutes
+// ===============================
 
-function updateTimer() {
+let timerElement = document.getElementById("timer");
+
+let totalQuestions = document.querySelectorAll(".question").length;
+
+// Computer Quiz = 35 Questions → 35 Minutes
+// Science Quiz = 15 Questions → 15 Minutes
+
+let timeLeft = (totalQuestions >= 30) ? 35 * 60 : 15 * 60;
+
+function startTimer() {
+
+    if (!timerElement) return;
 
     let minutes = Math.floor(timeLeft / 60);
     let seconds = timeLeft % 60;
 
-    let timer = document.getElementById("timer");
-
-    if (timer) {
-        timer.innerHTML =
-            minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-    }
+    timerElement.innerHTML =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
 
     if (timeLeft <= 0) {
-        clearInterval(timerInterval);
+
+        clearInterval(timer);
+
         showResult();
+
+        alert("⏰ Time is up!");
+
+        return;
     }
 
     timeLeft--;
+
 }
 
-const timerInterval = setInterval(updateTimer, 1000);
+let timer = setInterval(startTimer, 1000);
+
+startTimer();
+
+// ===============================
+// End of Script
+// ===============================

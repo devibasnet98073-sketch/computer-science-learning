@@ -1,160 +1,133 @@
-// ===============================
-// Computer Science Learning Website
-// Created by Shambhu Khatri (Suprim)
-// ===============================
+// ==========================
+// COMPUTER SCIENCE QUIZ V2.0
+// PART 1
+// ==========================
 
+let currentQuestion = 0;
 let score = 0;
-let answered = 0;
+let timeLeft = 600; // 10 minutes
 
+const questions = [
+
+{
+question:"What does CPU stand for?",
+options:[
+"Central Processing Unit",
+"Computer Processing Unit",
+"Central Program Unit",
+"Control Processing Unit"
+],
+answer:0
+},
+
+{
+question:"What does RAM stand for?",
+options:[
+"Random Access Memory",
+"Read Access Memory",
+"Run Access Memory",
+"Random Area Memory"
+],
+answer:0
+},
+
+{
+question:"Which language is used to create web pages?",
+options:[
+"HTML",
+"Windows",
+"MS Excel",
+"Photoshop"
+],
+answer:0
+},
+
+{
+question:"Which company developed Windows?",
+options:[
+"Microsoft",
+"Google",
+"Apple",
+"Intel"
+],
+answer:0
+},
+
+{
+question:"Which operating system is open source?",
+options:[
+"Linux",
+"Windows",
+"MS DOS",
+"Mac Paint"
+],
+answer:0
+},
+
+{
+question:"Which device is an input device?",
+options:[
+"Keyboard",
+"Monitor",
+"Printer",
+"Speaker"
+],
+answer:0
+},
+
+{
+question:"What does USB stand for?",
+options:[
+"Universal Serial Bus",
+"Universal System Bus",
+"User Serial Bus",
+"United Serial Bus"
+],
+answer:0
+},
+
+{
+question:"Which storage device is fastest?",
+options:[
+"SSD",
+"CD",
+"DVD",
+"Floppy Disk"
+],
+answer:0
+},
+
+{
+question:"Which language styles web pages?",
+options:[
+"CSS",
+"Python",
+"Java",
+"C"
+],
+answer:0
+},
+
+{
+question:"Which language makes websites interactive?",
+options:[
+"JavaScript",
+"HTML",
+"CSS",
+"SQL"
+],
+answer:0
+}
+
+];
+
+const questionElement = document.getElementById("question");
+const answerElement = document.getElementById("answers");
 const scoreElement = document.getElementById("score");
-const resultElement = document.getElementById("finalResult");
+const timerElement = document.getElementById("timer");
+const currentElement = document.getElementById("currentQuestion");
+const totalElement = document.getElementById("totalQuestion");
 
-// Answer Checking Function
-function checkAnswer(button, correct) {
-
-    const question = button.parentElement;
-
-    // Prevent answering same question twice
-    if (question.getAttribute("data-answered") === "true") {
-        return;
-    }
-
-    question.setAttribute("data-answered", "true");
-    answered++;
-
-    const buttons = question.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-
-        btn.disabled = true;
-
-        if (btn.getAttribute("onclick").includes("true")) {
-            btn.style.background = "#22c55e";
-            btn.style.color = "white";
-        }
-
-    });
-
-    if (correct) {
-        score++;
-        button.style.background = "#22c55e";
-        button.style.color = "white";
-    } else {
-        button.style.background = "#ef4444";
-        button.style.color = "white";
-    }
-
-    if (scoreElement) {
-        scoreElement.innerHTML = score;
-    }
-
+if(totalElement){
+totalElement.innerText = questions.length;
 }
-// ===============================
-// Show Final Result
-// ===============================
-
-function showResult() {
-
-    let totalQuestions = document.querySelectorAll(".question").length;
-
-    let percentage = (score / totalQuestions) * 100;
-
-    let grade = "";
-    let status = "";
-
-    if (percentage >= 90) {
-        grade = "A+";
-        status = "🎉 Outstanding!";
-    }
-    else if (percentage >= 80) {
-        grade = "A";
-        status = "🎉 Excellent!";
-    }
-    else if (percentage >= 70) {
-        grade = "B";
-        status = "✅ Very Good!";
-    }
-    else if (percentage >= 60) {
-        grade = "C";
-        status = "👍 Good!";
-    }
-    else if (percentage >= 40) {
-        grade = "D";
-        status = "🙂 Pass";
-    }
-    else {
-        grade = "F";
-        status = "❌ Fail";
-    }
-
-    resultElement.innerHTML = `
-    <h2>🏆 Quiz Result</h2>
-
-    <br>
-
-    <p><b>Correct Answers:</b> ${score}</p>
-
-    <p><b>Total Questions:</b> ${totalQuestions}</p>
-
-    <p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
-
-    <p><b>Grade:</b> ${grade}</p>
-
-    <h2>${status}</h2>
-    `;
-
-}
-// ===============================
-// Restart Quiz
-// ===============================
-
-function restartQuiz() {
-    location.reload();
-}
-
-// ===============================
-// Timer
-// ===============================
-
-let timerElement = document.getElementById("timer");
-
-let totalQuestions = document.querySelectorAll(".question").length;
-
-// Computer Quiz = 35 Questions → 35 Minutes
-// Science Quiz = 15 Questions → 15 Minutes
-
-let timeLeft = (totalQuestions >= 30) ? 35 * 60 : 15 * 60;
-
-function startTimer() {
-
-    if (!timerElement) return;
-
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
-
-    timerElement.innerHTML =
-        String(minutes).padStart(2, "0") + ":" +
-        String(seconds).padStart(2, "0");
-
-    if (timeLeft <= 0) {
-
-        clearInterval(timer);
-
-        showResult();
-
-        alert("⏰ Time is up!");
-
-        return;
-    }
-
-    timeLeft--;
-
-}
-
-let timer = setInterval(startTimer, 1000);
-
-startTimer();
-
-// ===============================
-// End of Script
-// ===============================

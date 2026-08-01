@@ -131,3 +131,248 @@ const totalElement = document.getElementById("totalQuestion");
 if(totalElement){
 totalElement.innerText = questions.length;
 }
+// ===============================
+// DISPLAY QUESTIONS
+// PART 2
+// ===============================
+
+const questionElement = document.getElementById("question");
+const optionsElement = document.getElementById("options");
+const questionNumber = document.getElementById("questionNumber");
+const progressBar = document.getElementById("progressBar");
+
+function loadQuestion(){
+
+selectedAnswer=-1;
+
+const q=questions[currentQuestion];
+
+questionNumber.innerHTML=
+`Question ${currentQuestion+1} / ${questions.length}`;
+
+questionElement.innerHTML=q.question;
+
+optionsElement.innerHTML="";
+
+q.options.forEach((option,index)=>{
+
+const button=document.createElement("button");
+
+button.className="option";
+
+button.innerHTML=option;
+
+button.onclick=()=>selectAnswer(index,button);
+
+optionsElement.appendChild(button);
+
+});
+
+updateProgress();
+
+}
+
+function selectAnswer(index,button){
+
+selectedAnswer=index;
+
+document.querySelectorAll(".option").forEach(btn=>{
+
+btn.classList.remove("active");
+
+});
+
+button.classList.add("active");
+
+}
+
+function updateProgress(){
+
+let progress=((currentQuestion)/questions.length)*100;
+
+progressBar.style.width=progress+"%";
+
+}
+
+// ===============================
+// NEXT BUTTON
+// ===============================
+
+document.getElementById("nextBtn").onclick=function(){
+
+if(selectedAnswer==-1){
+
+alert("Please select an answer.");
+
+return;
+
+}
+
+if(selectedAnswer===questions[currentQuestion].answer){
+
+score++;
+
+}
+
+currentQuestion++;
+
+if(currentQuestion<questions.length){
+
+loadQuestion();
+
+}else{
+
+showResult();
+
+}
+
+};
+
+// ===============================
+// PREVIOUS BUTTON
+// ===============================
+
+document.getElementById("prevBtn").onclick=function(){
+
+if(currentQuestion>0){
+
+currentQuestion--;
+
+loadQuestion();
+
+}
+
+};
+
+// ===============================
+// TIMER
+// ===============================
+
+let timeLeft=600;
+
+const timer=document.getElementById("timer");
+
+const countdown=setInterval(()=>{
+
+let minutes=Math.floor(timeLeft/60);
+
+let seconds=timeLeft%60;
+
+timer.innerHTML=
+
+`${minutes}:${seconds<10?"0":""}${seconds}`;
+
+timeLeft--;
+
+if(timeLeft<0){
+
+clearInterval(countdown);
+
+showResult();
+
+}
+
+},1000);
+
+loadQuestion();
+// ===============================
+// RESULT
+// PART 3
+// ===============================
+
+function showResult(){
+
+clearInterval(countdown);
+
+document.querySelector(".quiz-card").style.display="none";
+
+document.getElementById("resultCard").style.display="block";
+
+document.getElementById("finalScore").innerHTML=
+score+"/"+questions.length;
+
+document.getElementById("correctAnswers").innerHTML=score;
+
+document.getElementById("wrongAnswers").innerHTML=
+questions.length-score;
+
+let percentage=Math.round((score/questions.length)*100);
+
+document.getElementById("percentage").innerHTML=
+percentage+"%";
+
+let grade="Fail";
+
+if(percentage>=90){
+
+grade="A+ Excellent";
+
+}else if(percentage>=80){
+
+grade="A Very Good";
+
+}else if(percentage>=70){
+
+grade="B Good";
+
+}else if(percentage>=60){
+
+grade="C Pass";
+
+}else{
+
+grade="Fail";
+
+}
+
+document.getElementById("grade").innerHTML=grade;
+
+// Highest Score Save
+
+let highScore=localStorage.getItem("highScore");
+
+if(highScore==null || score>highScore){
+
+localStorage.setItem("highScore",score);
+
+}
+
+// Level Unlock
+
+if(percentage>=80){
+
+document.getElementById("unlockMessage").innerHTML=
+
+"<p class='badge gold'>🎉 Congratulations! Level 2 and Level 3 Unlocked.</p>";
+
+document.getElementById("level2").classList.remove("locked");
+
+document.getElementById("level3").classList.remove("locked");
+
+}else if(percentage>=60){
+
+document.getElementById("unlockMessage").innerHTML=
+
+"<p class='badge silver'>🎉 Congratulations! Level 2 Unlocked.</p>";
+
+document.getElementById("level2").classList.remove("locked");
+
+}else{
+
+document.getElementById("unlockMessage").innerHTML=
+
+"<p class='badge bronze'>❌ Score 60% to unlock Level 2.</p>";
+
+}
+
+}
+
+// ===============================
+// RESTART QUIZ
+// ===============================
+
+function restartQuiz(){
+
+location.reload();
+
+}

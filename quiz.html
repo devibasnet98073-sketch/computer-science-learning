@@ -1,572 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Computer Science Quiz</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <header>
 
-<h1>💻 Computer Science Quiz</h1>
+<a href="index.html" class="logo">
+
+CS QUIZ
+
+</a>
 
 <nav>
+
 <a href="index.html">Home</a>
-<a href="about.html">About Me</a>
-<a href="quiz.html">Computer Quiz</a>
-<a href="science.html">Science Quiz</a>
+
+<a href="about.html">About</a>
+
+<a href="leaderboard.html">Leaderboard</a>
+
 <a href="contact.html">Contact</a>
+
 </nav>
 
 </header>
 
-<section class="hero">
+<div class="quiz-container">
 
-<h2>Computer Science Quiz Challenge</h2>
+<div class="quiz-card">
 
-<p>Answer all 35 questions and test your Computer Science knowledge.</p>
+<h1 style="text-align:center; margin-bottom:20px;">
 
-<p><b>Score: <span id="score">0</span> / 35</b></p>
+💻 Computer Science Quiz
 
-<p><b>Time Left: <span id="timer">35:00</span></b></p>
+</h1>
 
-</section>
+<p style="text-align:center; color:#d1d5db;">
 
-<div class="question">
+Level 1 • 10 Questions
 
-<h3>Question 1</h3>
-
-<p>What does CPU stand for?</p>
-
-<button onclick="checkAnswer(this,true)">Central Processing Unit</button>
-<button onclick="checkAnswer(this,false)">Computer Processing Unit</button>
-<button onclick="checkAnswer(this,false)">Central Program Unit</button>
-<button onclick="checkAnswer(this,false)">Control Processing Unit</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 2</h3>
-
-<p>What does RAM stand for?</p>
-
-<button onclick="checkAnswer(this,true)">Random Access Memory</button>
-<button onclick="checkAnswer(this,false)">Read Access Memory</button>
-<button onclick="checkAnswer(this,false)">Run Access Memory</button>
-<button onclick="checkAnswer(this,false)">Random Area Memory</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 3</h3>
-
-<p>Which device is used to print documents?</p>
-
-<button onclick="checkAnswer(this,false)">Scanner</button>
-<button onclick="checkAnswer(this,true)">Printer</button>
-<button onclick="checkAnswer(this,false)">Monitor</button>
-<button onclick="checkAnswer(this,false)">Keyboard</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 4</h3>
-
-<p>Which is an input device?</p>
-
-<button onclick="checkAnswer(this,true)">Keyboard</button>
-<button onclick="checkAnswer(this,false)">Monitor</button>
-<button onclick="checkAnswer(this,false)">Speaker</button>
-<button onclick="checkAnswer(this,false)">Printer</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 5</h3>
-
-<p>Which language is used to create web pages?</p>
-
-<button onclick="checkAnswer(this,true)">HTML</button>
-<button onclick="checkAnswer(this,false)">Windows</button>
-<button onclick="checkAnswer(this,false)">MS Excel</button>
-<button onclick="checkAnswer(this,false)">Photoshop</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 6</h3>
-
-<p>What does CSS stand for?</p>
-
-<button onclick="checkAnswer(this,true)">Cascading Style Sheets</button>
-<button onclick="checkAnswer(this,false)">Computer Style Sheets</button>
-<button onclick="checkAnswer(this,false)">Creative Style Sheets</button>
-<button onclick="checkAnswer(this,false)">Color Style Sheets</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 7</h3>
-
-<p>Which company developed Windows?</p>
-
-<button onclick="checkAnswer(this,true)">Microsoft</button>
-<button onclick="checkAnswer(this,false)">Google</button>
-<button onclick="checkAnswer(this,false)">Apple</button>
-<button onclick="checkAnswer(this,false)">Intel</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 8</h3>
-
-<p>Which is an operating system?</p>
-
-<button onclick="checkAnswer(this,true)">Linux</button>
-<button onclick="checkAnswer(this,false)">HTML</button>
-<button onclick="checkAnswer(this,false)">CSS</button>
-<button onclick="checkAnswer(this,false)">JavaScript</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 9</h3>
-
-<p>What does USB stand for?</p>
-
-<button onclick="checkAnswer(this,true)">Universal Serial Bus</button>
-<button onclick="checkAnswer(this,false)">Universal System Bus</button>
-<button onclick="checkAnswer(this,false)">United Serial Bus</button>
-<button onclick="checkAnswer(this,false)">User Serial Bus</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 10</h3>
-
-<p>Which storage device is the fastest?</p>
-
-<button onclick="checkAnswer(this,false)">DVD</button>
-<button onclick="checkAnswer(this,false)">CD</button>
-<button onclick="checkAnswer(this,true)">SSD</button>
-<button onclick="checkAnswer(this,false)">Floppy Disk</button>
-
-</div>
-
-<hr>
-<div class="question">
-
-<h3>Question 11</h3>
-<p>Which device displays output?</p>
-
-<button onclick="checkAnswer(this,false)">Keyboard</button>
-<button onclick="checkAnswer(this,true)">Monitor</button>
-<button onclick="checkAnswer(this,false)">Mouse</button>
-<button onclick="checkAnswer(this,false)">Scanner</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 12</h3>
-<p>Which key deletes the character to the left of the cursor?</p>
-
-<button onclick="checkAnswer(this,true)">Backspace</button>
-<button onclick="checkAnswer(this,false)">Delete</button>
-<button onclick="checkAnswer(this,false)">Shift</button>
-<button onclick="checkAnswer(this,false)">Ctrl</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 13</h3>
-<p>Which of these is a web browser?</p>
-
-<button onclick="checkAnswer(this,true)">Google Chrome</button>
-<button onclick="checkAnswer(this,false)">MS Word</button>
-<button onclick="checkAnswer(this,false)">Windows</button>
-<button onclick="checkAnswer(this,false)">Linux</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 14</h3>
-<p>Which language is used to style web pages?</p>
-
-<button onclick="checkAnswer(this,true)">CSS</button>
-<button onclick="checkAnswer(this,false)">HTML</button>
-<button onclick="checkAnswer(this,false)">Python</button>
-<button onclick="checkAnswer(this,false)">Java</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 15</h3>
-<p>Which language adds interactivity to websites?</p>
-
-<button onclick="checkAnswer(this,false)">HTML</button>
-<button onclick="checkAnswer(this,false)">CSS</button>
-<button onclick="checkAnswer(this,true)">JavaScript</button>
-<button onclick="checkAnswer(this,false)">SQL</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 16</h3>
-<p>Which memory is temporary?</p>
-
-<button onclick="checkAnswer(this,true)">RAM</button>
-<button onclick="checkAnswer(this,false)">ROM</button>
-<button onclick="checkAnswer(this,false)">SSD</button>
-<button onclick="checkAnswer(this,false)">Hard Disk</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 17</h3>
-<p>Which is application software?</p>
-
-<button onclick="checkAnswer(this,true)">MS Word</button>
-<button onclick="checkAnswer(this,false)">Linux</button>
-<button onclick="checkAnswer(this,false)">Windows</button>
-<button onclick="checkAnswer(this,false)">Android</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 18</h3>
-<p>What does WWW stand for?</p>
-
-<button onclick="checkAnswer(this,true)">World Wide Web</button>
-<button onclick="checkAnswer(this,false)">World Web Wide</button>
-<button onclick="checkAnswer(this,false)">Wide World Web</button>
-<button onclick="checkAnswer(this,false)">Web World Wide</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 19</h3>
-<p>Which device is used to scan documents?</p>
-
-<button onclick="checkAnswer(this,true)">Scanner</button>
-<button onclick="checkAnswer(this,false)">Printer</button>
-<button onclick="checkAnswer(this,false)">Speaker</button>
-<button onclick="checkAnswer(this,false)">Monitor</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 20</h3>
-<p>Which file extension is used for HTML?</p>
-
-<button onclick="checkAnswer(this,true)">.html</button>
-<button onclick="checkAnswer(this,false)">.jpg</button>
-<button onclick="checkAnswer(this,false)">.css</button>
-<button onclick="checkAnswer(this,false)">.mp3</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 21</h3>
-<p>Which company developed Java?</p>
-
-<button onclick="checkAnswer(this,false)">Microsoft</button>
-<button onclick="checkAnswer(this,true)">Sun Microsystems</button>
-<button onclick="checkAnswer(this,false)">Google</button>
-<button onclick="checkAnswer(this,false)">Apple</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 22</h3>
-<p>What does URL stand for?</p>
-
-<button onclick="checkAnswer(this,true)">Uniform Resource Locator</button>
-<button onclick="checkAnswer(this,false)">Universal Resource Link</button>
-<button onclick="checkAnswer(this,false)">Uniform Reference Link</button>
-<button onclick="checkAnswer(this,false)">Universal Reference Locator</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 23</h3>
-<p>Which protocol is mainly used to open websites?</p>
-
-<button onclick="checkAnswer(this,true)">HTTP</button>
-<button onclick="checkAnswer(this,false)">FTP</button>
-<button onclick="checkAnswer(this,false)">SMTP</button>
-<button onclick="checkAnswer(this,false)">POP3</button>
-
-</div>
-
-<hr>
-<div class="question">
-
-<h3>Question 24</h3>
-<p>Which HTML tag is used to create a hyperlink?</p>
-
-<button onclick="checkAnswer(this,true)">&lt;a&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;p&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;img&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;div&gt;</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 25</h3>
-<p>Which symbol is used for comments in CSS?</p>
-
-<button onclick="checkAnswer(this,true)">/* comment */</button>
-<button onclick="checkAnswer(this,false)">// comment</button>
-<button onclick="checkAnswer(this,false)"># comment</button>
-<button onclick="checkAnswer(this,false)"><!-- comment --></button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 26</h3>
-<p>Which language is mainly used for Artificial Intelligence?</p>
-
-<button onclick="checkAnswer(this,true)">Python</button>
-<button onclick="checkAnswer(this,false)">HTML</button>
-<button onclick="checkAnswer(this,false)">CSS</button>
-<button onclick="checkAnswer(this,false)">XML</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 27</h3>
-<p>Which company developed the Android operating system?</p>
-
-<button onclick="checkAnswer(this,true)">Google</button>
-<button onclick="checkAnswer(this,false)">Microsoft</button>
-<button onclick="checkAnswer(this,false)">Apple</button>
-<button onclick="checkAnswer(this,false)">Intel</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 28</h3>
-<p>Which device connects a computer to the Internet?</p>
-
-<button onclick="checkAnswer(this,true)">Router</button>
-<button onclick="checkAnswer(this,false)">Printer</button>
-<button onclick="checkAnswer(this,false)">Scanner</button>
-<button onclick="checkAnswer(this,false)">Projector</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 29</h3>
-<p>Which HTML tag is used to insert an image?</p>
-
-<button onclick="checkAnswer(this,true)">&lt;img&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;table&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;body&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;video&gt;</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 30</h3>
-<p>Which key is used to refresh a webpage?</p>
-
-<button onclick="checkAnswer(this,true)">F5</button>
-<button onclick="checkAnswer(this,false)">F1</button>
-<button onclick="checkAnswer(this,false)">F3</button>
-<button onclick="checkAnswer(this,false)">F12</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 31</h3>
-<p>Which storage unit is larger?</p>
-
-<button onclick="checkAnswer(this,true)">TB</button>
-<button onclick="checkAnswer(this,false)">MB</button>
-<button onclick="checkAnswer(this,false)">KB</button>
-<button onclick="checkAnswer(this,false)">Byte</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 32</h3>
-<p>Which one is a search engine?</p>
-
-<button onclick="checkAnswer(this,true)">Google</button>
-<button onclick="checkAnswer(this,false)">Windows</button>
-<button onclick="checkAnswer(this,false)">Photoshop</button>
-<button onclick="checkAnswer(this,false)">Excel</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 33</h3>
-<p>Which HTML tag creates a paragraph?</p>
-
-<button onclick="checkAnswer(this,true)">&lt;p&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;h1&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;br&gt;</button>
-<button onclick="checkAnswer(this,false)">&lt;hr&gt;</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 34</h3>
-<p>What does GPU stand for?</p>
-
-<button onclick="checkAnswer(this,true)">Graphics Processing Unit</button>
-<button onclick="checkAnswer(this,false)">General Processing Unit</button>
-<button onclick="checkAnswer(this,false)">Graphic Program Unit</button>
-<button onclick="checkAnswer(this,false)">General Program Utility</button>
-
-</div>
-
-<hr>
-
-<div class="question">
-
-<h3>Question 35</h3>
-<p>Which language is used to query databases?</p>
-
-<button onclick="checkAnswer(this,false)">Java</button>
-<button onclick="checkAnswer(this,false)">Python</button>
-<button onclick="checkAnswer(this,true)">SQL</button>
-<button onclick="checkAnswer(this,false)">CSS</button>
-
-</div>
-
-<hr>
-
-<h2 style="font-size:40px;">🏆 Final Result</h2>
-
-<p style="font-size:30px;">
-Score:
-<b><span id="score">0</span></b> / 35
 </p>
 
-<p style="font-size:30px;">
-Time Left:
-<b><span id="timer">35:00</span></b>
+<div class="progress">
+
+<div class="progress-bar" id="progressBar">
+
+</div>
+
+</div>
+
+<div class="timer" id="timer">
+
+10:00
+
+</div>
+
+<div class="question-number" id="questionNumber">
+
+Question 1 / 10
+
+</div>
+
+<div class="question" id="question">
+
+Loading Question...
+
+</div>
+
+<div id="options">
+
+<button class="option">Option A</button>
+
+<button class="option">Option B</button>
+
+<button class="option">Option C</button>
+
+<button class="option">Option D</button>
+
+</div>
+
+<div class="quiz-buttons">
+
+<button class="prev-btn" id="prevBtn">
+
+Previous
+
+</button>
+
+<button class="next-btn" id="nextBtn">
+
+Next
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+<!-- RESULT SECTION -->
+
+<div class="result-card" id="resultCard" style="display:none;">
+
+<h1>🎉 Quiz Completed!</h1>
+
+<div class="score-circle" id="finalScore">
+0/10
+</div>
+
+<p class="result-info">
+Correct Answers:
+<span id="correctAnswers">0</span>
 </p>
+
+<p class="result-info">
+Wrong Answers:
+<span id="wrongAnswers">0</span>
+</p>
+
+<p class="result-info">
+Percentage:
+<span id="percentage">0%</span>
+</p>
+
+<p class="result-info">
+Grade:
+<span id="grade">-</span>
+</p>
+
+<div id="unlockMessage">
+
+<p class="badge gold">
+
+Complete 60% to Unlock Level 2
+
+</p>
+
+</div>
 
 <br>
 
-<button class="btn" onclick="showResult()" style="font-size:24px;padding:18px 40px;">
-📊 Show Result
+<button class="btn" onclick="restartQuiz()">
+
+Play Again
+
 </button>
 
-<button class="btn" onclick="restartQuiz()" style="font-size:24px;padding:18px 40px;">
-🔄 Restart Quiz
-</button>
+<a href="leaderboard.html" class="btn-outline">
 
-<br><br>
+Leaderboard
 
-<div id="finalResult"
-style="font-size:30px;
-font-weight:bold;
-padding:30px;
-background:white;
-color:black;
-border-radius:15px;
-max-width:750px;
-margin:auto;">
+</a>
+
 </div>
+
+<!-- LEVEL STATUS -->
+
+<section style="margin-top:60px;">
+
+<h2 class="section-title">
+
+Quiz <span>Levels</span>
+
+</h2>
+
+<div class="grid">
+
+<div class="level-card">
+
+<h3>Level 1</h3>
+
+<p>10 Easy Questions</p>
+
+<p>Pass: 60%</p>
+
+</div>
+
+<div class="level-card locked" id="level2">
+
+<h3>Level 2 🔒</h3>
+
+<p>10 Medium Questions</p>
+
+<p>Unlock at 60%</p>
+
+</div>
+
+<div class="level-card locked" id="level3">
+
+<h3>Level 3 🔒</h3>
+
+<p>10 Hard Questions</p>
+
+<p>Unlock at 70%</p>
+
+</div>
+
+</div>
+
+</section>
 
 <script src="script.js"></script>
 

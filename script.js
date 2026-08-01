@@ -120,6 +120,242 @@ answer:0
 }
 
 ];
+// ===============================
+// LEVEL 2 QUESTIONS
+// ===============================
+
+{
+question:"Which HTML tag is used to insert an image?",
+options:["<img>","<image>","<picture>","<src>"],
+answer:0,
+level:2
+},
+
+{
+question:"Which CSS property changes text color?",
+options:["color","font-color","text-color","background"],
+answer:0,
+level:2
+},
+
+{
+question:"JavaScript is mainly used for?",
+options:[
+"Making websites interactive",
+"Creating hardware",
+"Editing photos",
+"Managing databases"
+],
+answer:0,
+level:2
+},
+
+{
+question:"Which company developed JavaScript?",
+options:[
+"Netscape",
+"Microsoft",
+"Google",
+"Apple"
+],
+answer:0,
+level:2
+},
+
+{
+question:"Which symbol is used for comments in JavaScript?",
+options:[
+"//",
+"<!-- -->",
+"##",
+"**"
+],
+answer:0,
+level:2
+},
+
+{
+question:"Which HTML tag creates a hyperlink?",
+options:[
+"<a>",
+"<link>",
+"<url>",
+"<href>"
+],
+answer:0,
+level:2
+},
+
+{
+question:"Which CSS property makes text bold?",
+options:[
+"font-weight",
+"font-style",
+"text-bold",
+"font-size"
+],
+answer:0,
+level:2
+},
+
+{
+question:"Which data type stores true or false?",
+options:[
+"Boolean",
+"String",
+"Integer",
+"Float"
+],
+answer:0,
+level:2
+},
+
+{
+question:"Which JavaScript function displays a popup message?",
+options:[
+"alert()",
+"print()",
+"show()",
+"popup()"
+],
+answer:0,
+level:2
+},
+
+{
+question:"What does URL stand for?",
+options:[
+"Uniform Resource Locator",
+"Universal Resource Link",
+"Unique Reference Locator",
+"User Resource Link"
+],
+answer:0,
+level:2
+// ===============================
+// LEVEL 3 QUESTIONS
+// ===============================
+
+{
+question:"What does SQL stand for?",
+options:[
+"Structured Query Language",
+"Simple Query Language",
+"System Query Language",
+"Standard Question Language"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which device connects different networks together?",
+options:[
+"Router",
+"Switch",
+"Hub",
+"Repeater"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which protocol is mainly used to browse websites?",
+options:[
+"HTTP",
+"FTP",
+"SMTP",
+"POP3"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which database command is used to display data?",
+options:[
+"SELECT",
+"INSERT",
+"UPDATE",
+"DELETE"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which HTML tag is used to create a table row?",
+options:[
+"<tr>",
+"<td>",
+"<table>",
+"<th>"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which CSS property is used to create rounded corners?",
+options:[
+"border-radius",
+"corner-radius",
+"radius",
+"round-border"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which JavaScript keyword declares a constant variable?",
+options:[
+"const",
+"var",
+"let",
+"constant"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which topology uses a central hub?",
+options:[
+"Star",
+"Bus",
+"Ring",
+"Mesh"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which memory is temporary?",
+options:[
+"RAM",
+"ROM",
+"SSD",
+"Hard Disk"
+],
+answer:0,
+level:3
+},
+
+{
+question:"Which language is mainly used for web page structure?",
+options:[
+"HTML",
+"CSS",
+"JavaScript",
+"Python"
+],
+answer:0,
+level:3
+},
+},
 
 const questionElement = document.getElementById("question");
 const answerElement = document.getElementById("answers");

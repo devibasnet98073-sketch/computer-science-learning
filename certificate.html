@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Certificate</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card" style="max-width:900px;margin:50px auto;text-align:center;padding:50px;">
+
+<h3 style="color:#60a5fa;">CERTIFICATE OF ACHIEVEMENT</h3>
+
+<h1 style="margin:25px 0;">🏆 Certificate</h1>
+
+<p>This certificate is proudly presented to</p>
+
+<h2 id="certificateName" style="margin:25px 0;color:#60a5fa;">
+
+Shambhu Khatri
+
+</h2>
+
+<p>
+
+For successfully completing the
+
+<b>Computer Science Quiz</b>
+
+</p>
+
+<br>
+
+<h2>
+
+Score :
+<span id="certificateScore">
+
+0 / 30
+
+</span>
+
+</h2>
+
+<br>
+
+<h2>
+
+Grade :
+<span id="certificateGrade">
+
+A+
+
+</span>
+
+</h2>
+
+<br>
+
+<p>
+
+Date :
+<span id="certificateDate"></span>
+
+</p>
+
+<br>
+
+<button class="btn" onclick="window.print()">
+
+🖨️ Print / Save as PDF
+
+</button>
+
+<a href="index.html" class="btn-outline">
+
+Home
+
+</a>
+
+</div>
+
+</div>
+<script>
+
+// Show Today's Date
+
+const today = new Date();
+
+document.getElementById("certificateDate").innerHTML =
+today.toLocaleDateString();
+
+// Show User Name
+
+const userName =
+localStorage.getItem("fullname") ||
+localStorage.getItem("currentUser") ||
+"Student";
+
+document.getElementById("certificateName").innerHTML =
+userName;
+
+// Show Score
+
+const score =
+localStorage.getItem("highScore") || "0";
+
+document.getElementById("certificateScore").innerHTML =
+score + " / 30";
+
+// Show Grade
+
+let percentage = (parseInt(score) / 30) * 100;
+
+let grade = "Fail";
+
+if (percentage >= 90) {
+
+grade = "A+ Excellent";
+
+} else if (percentage >= 80) {
+
+grade = "A Very Good";
+
+} else if (percentage >= 70) {
+
+grade = "B Good";
+
+} else if (percentage >= 60) {
+
+grade = "C Pass";
+
+}
+
+document.getElementById("certificateGrade").innerHTML =
+grade;
+
+</script>
+
+</body>
+
+</html>

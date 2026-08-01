@@ -4,281 +4,114 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Login | Computer Science Learning</title>
+<title>Login | Computer Science Quiz</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="bg-glow"></div>
+<div class="auth-container">
 
-<header class="header">
+<div class="auth-box">
 
-<div class="logo">
+<h2>Welcome Back 👋</h2>
 
-<i class="fas fa-laptop-code"></i>
-
-<span>Computer Science Learning</span>
-
-</div>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="login.html" class="active">Login</a>
-
-<a href="signup.html">Sign Up</a>
-
-</nav>
-
-</header>
-
-<section class="login-section">
-
-<div class="login-card">
-
-<h1>
-
-<i class="fas fa-user-circle"></i>
-
-Welcome Back
-
-</h1>
-
-<p>
-
-Login to continue your quiz journey.
-
+<p style="text-align:center;margin-bottom:25px;color:#d1d5db;">
+Login to continue your Computer Science Quiz journey.
 </p>
 
 <form id="loginForm">
 
 <div class="input-box">
 
-<i class="fas fa-user"></i>
+<label>Username</label>
 
 <input
 type="text"
 id="username"
-placeholder="Username"
+placeholder="Enter your username"
 required>
 
 </div>
 
 <div class="input-box">
 
-<i class="fas fa-lock"></i>
+<label>Password</label>
 
 <input
 type="password"
 id="password"
-placeholder="Password"
+placeholder="Enter your password"
 required>
 
 </div>
-<button type="submit" class="btn login-btn">
 
-<i class="fas fa-right-to-bracket"></i>
-
-Login
-
-</button>
-
-<div class="login-options">
-
-<label>
-
-<input type="checkbox">
-
-Remember Me
-
-</label>
-
-<a href="#">
-
-Forgot Password?
-
-</a>
-
-</div>
-
-<hr>
-
-<div class="signup-link">
-
-<p>
-
-Don't have an account?
-
-</p>
-
-<a href="signup.html" class="btn secondary">
-
-<i class="fas fa-user-plus"></i>
-
-Create Account
-
-</a>
-
-</div>
-
-</form>
-
-</div>
-
-</section>
-<footer class="footer">
-
-<div class="footer-content">
-
-<h2>💻 Computer Science Learning</h2>
-
-<p>
-
-Learn • Practice • Improve
-
-</p>
-
-<div class="social-icons">
-
-<a href="#"><i class="fab fa-facebook"></i></a>
-
-<a href="#"><i class="fab fa-instagram"></i></a>
-
-<a href="#"><i class="fab fa-github"></i></a>
-
-<a href="#"><i class="fab fa-youtube"></i></a>
-
-</div>
-
-<p>
-
-© 2026 Computer Science Learning
-
-</p>
-
-<p>
-
-Designed & Developed by
-
-<strong>Shambhu Khatri (Suprim)</strong>
-
-</p>
-
-</div>
-
-</footer>
-
-<script src="login.js"></script>
-
-</body>
-
-</html>
-<button type="submit" class="btn">
-
-<i class="fa-solid fa-right-to-bracket"></i>
+<button
+type="submit"
+class="auth-btn">
 
 Login
 
 </button>
 
-<div class="login-options">
+</form>
 
-<label>
-
-<input type="checkbox">
-
-Remember Me
-
-</label>
-
-<a href="#">
-
-Forgot Password?
-
-</a>
-
-</div>
-
-<div class="divider">
-
-<span>OR</span>
-
-</div>
-
-<div class="signup-box">
+<div style="text-align:center;margin-top:25px;">
 
 <p>
 
 Don't have an account?
 
-</p>
-
-<a href="signup.html" class="btn outline">
-
-<i class="fa-solid fa-user-plus"></i>
+<a
+href="signup.html"
+style="color:#60a5fa;text-decoration:none;">
 
 Create Account
 
 </a>
 
-</div>
-
-</form>
-
-</div>
-
-</section>
-<footer class="footer">
-
-<h2>Computer Science Learning</h2>
-
-<p>
-
-Secure • Learn • Practice • Achieve
-
 </p>
 
-<div class="social-icons">
-
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-
-<a href="#"><i class="fab fa-instagram"></i></a>
-
-<a href="#"><i class="fab fa-github"></i></a>
-
-<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
 
 </div>
 
-<p>
+<script>
 
-© 2026 Computer Science Learning
+document.getElementById("loginForm").addEventListener("submit", function(e){
 
-</p>
+e.preventDefault();
 
-<p>
+let username = document.getElementById("username").value.trim();
 
-Designed & Developed by
+let password = document.getElementById("password").value.trim();
 
-<strong>Shambhu Khatri (Suprim)</strong>
+let savedUser = localStorage.getItem("username");
 
-</p>
+let savedPass = localStorage.getItem("password");
 
-</footer>
+if(username === savedUser && password === savedPass){
 
-<script src="login.js"></script>
+localStorage.setItem("currentUser", username);
+
+alert("Login Successful!");
+
+window.location.href = "index.html";
+
+}else{
+
+alert("Invalid Username or Password!");
+
+}
+
+});
+
+</script>
 
 </body>
 

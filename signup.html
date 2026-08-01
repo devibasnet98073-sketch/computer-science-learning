@@ -4,65 +4,25 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sign Up | Computer Science Learning</title>
+<title>Create Account | Computer Science Quiz</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="background-blur"></div>
+<div class="auth-container">
 
-<header class="header">
+<div class="auth-box">
 
-<div class="logo">
+<h2>Create Account</h2>
 
-<i class="fa-solid fa-laptop-code"></i>
+<p style="text-align:center;color:#d1d5db;margin-bottom:25px;">
 
-<span>Computer Science Learning</span>
-
-</div>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="login.html">Login</a>
-
-<a class="active" href="signup.html">Sign Up</a>
-
-</nav>
-
-</header>
-
-<section class="login-section">
-
-<div class="signup-card">
-
-<h1>
-
-<i class="fa-solid fa-user-plus"></i>
-
-Create Your Account
-
-</h1>
-
-<p>
-
-Create your account to save your quiz score, unlock levels and appear on the leaderboard.
+Create your free account to start playing quizzes.
 
 </p>
 
@@ -70,141 +30,113 @@ Create your account to save your quiz score, unlock levels and appear on the lea
 
 <div class="input-box">
 
+<label>Full Name</label>
+
 <input
 type="text"
 id="fullname"
-placeholder="Full Name"
+placeholder="Enter your full name"
 required>
 
 </div>
 
 <div class="input-box">
+
+<label>Username</label>
 
 <input
 type="text"
 id="username"
-placeholder="Username"
+placeholder="Choose a username"
 required>
 
 </div>
 
 <div class="input-box">
 
-<input
-type="email"
-id="email"
-placeholder="Email Address"
-required>
-
-</div>
-<div class="input-box">
+<label>Password</label>
 
 <input
 type="password"
 id="password"
-placeholder="Create Password"
+placeholder="Create a password"
 required>
 
 </div>
 
 <div class="input-box">
 
+<label>Confirm Password</label>
+
 <input
 type="password"
 id="confirmPassword"
-placeholder="Confirm Password"
+placeholder="Confirm password"
 required>
 
 </div>
 
-<div class="terms-box">
-
-<label>
-
-<input type="checkbox" required>
-
-I agree to the Terms & Conditions
-
-</label>
-
-</div>
-
-<button type="submit" class="btn">
-
-<i class="fa-solid fa-user-check"></i>
+<button
+type="submit"
+class="auth-btn">
 
 Create Account
 
 </button>
 
-<div class="divider">
+</form>
 
-<span>OR</span>
-
-</div>
-
-<div class="signup-box">
-
-<p>
+<div style="text-align:center;margin-top:25px;">
 
 Already have an account?
 
-</p>
+<a href="login.html"
+style="color:#60a5fa;text-decoration:none;">
 
-<a href="login.html" class="btn outline">
-
-<i class="fa-solid fa-right-to-bracket"></i>
-
-Login Now
+Login
 
 </a>
 
 </div>
-
-</form>
+</div>
 
 </div>
 
-</section>
-<footer class="footer">
+<script>
 
-<h2>Computer Science Learning</h2>
+document.getElementById("signupForm").addEventListener("submit",function(e){
 
-<p>
+e.preventDefault();
 
-Create • Learn • Practice • Achieve
+let fullname=document.getElementById("fullname").value.trim();
 
-</p>
+let username=document.getElementById("username").value.trim();
 
-<div class="social-icons">
+let password=document.getElementById("password").value.trim();
 
-<a href="#"><i class="fab fa-facebook-f"></i></a>
+let confirm=document.getElementById("confirmPassword").value.trim();
 
-<a href="#"><i class="fab fa-instagram"></i></a>
+if(password!==confirm){
 
-<a href="#"><i class="fab fa-github"></i></a>
+alert("Passwords do not match!");
 
-<a href="#"><i class="fab fa-youtube"></i></a>
+return;
 
-</div>
+}
 
-<p>
+localStorage.setItem("fullname",fullname);
 
-© 2026 Computer Science Learning
+localStorage.setItem("username",username);
 
-</p>
+localStorage.setItem("password",password);
 
-<p>
+alert("Account Created Successfully!");
 
-Designed & Developed by
+window.location.href="login.html";
 
-<strong>Shambhu Khatri (Suprim)</strong>
+});
 
-</p>
-
-</footer>
-
-<script src="signup.js"></script>
+</script>
 
 </body>
 

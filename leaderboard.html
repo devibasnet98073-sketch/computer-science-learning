@@ -4,49 +4,33 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Leaderboard | Computer Science Learning</title>
+<title>Leaderboard | Computer Science Quiz</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="background-blur"></div>
+<header>
 
-<header class="header">
+<a href="index.html" class="logo">
 
-<div class="logo">
+CS QUIZ
 
-<i class="fa-solid fa-laptop-code"></i>
-
-<span>Computer Science Learning</span>
-
-</div>
+</a>
 
 <nav>
 
 <a href="index.html">Home</a>
 
-<a href="about.html">About</a>
-
 <a href="quiz.html">Computer Quiz</a>
 
 <a href="science.html">Science Quiz</a>
 
-<a class="active" href="leaderboard.html">Leaderboard</a>
+<a href="about.html">About</a>
 
 <a href="contact.html">Contact</a>
 
@@ -54,241 +38,190 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
 
 </header>
 
-<section class="leaderboard-section">
+<div class="leaderboard">
 
 <div class="leaderboard-card">
 
-<h1>
+<h2>🏆 Leaderboard</h2>
 
-🏆 Global Leaderboard
+<p style="text-align:center;color:#d1d5db;margin-bottom:30px;">
 
-</h1>
-
-<p>
-
-Top players with the highest quiz scores.
+Top Players of Computer Science Quiz
 
 </p>
 
-<div class="leaderboard-table">
+<div class="rank-item">
 
-<table>
+<div class="rank-number">🥇 #1</div>
 
-<thead>
+<div class="player-name" id="player1">
 
-<tr>
-
-<th>Rank</th>
-
-<th>Player</th>
-
-<th>Level</th>
-
-<th>Score</th>
-
-<th>Accuracy</th>
-
-</tr>
-
-</thead>
-
-<tbody id="leaderboardBody">
-<tr class="gold">
-
-<td>🥇 1</td>
-
-<td>Alex</td>
-
-<td>Level 3</td>
-
-<td>98 / 100</td>
-
-<td>98%</td>
-
-</tr>
-
-<tr class="silver">
-
-<td>🥈 2</td>
-
-<td>Sarah</td>
-
-<td>Level 3</td>
-
-<td>95 / 100</td>
-
-<td>95%</td>
-
-</tr>
-
-<tr class="bronze">
-
-<td>🥉 3</td>
-
-<td>John</td>
-
-<td>Level 3</td>
-
-<td>93 / 100</td>
-
-<td>93%</td>
-
-</tr>
-
-<tr>
-
-<td>4</td>
-
-<td>Emily</td>
-
-<td>Level 3</td>
-
-<td>91 / 100</td>
-
-<td>91%</td>
-
-</tr>
-
-<tr>
-
-<td>5</td>
-
-<td>David</td>
-
-<td>Level 2</td>
-
-<td>89 / 100</td>
-
-<td>89%</td>
-
-</tr>
-
-<tr>
-
-<td>6</td>
-
-<td>Sophia</td>
-
-<td>Level 2</td>
-
-<td>87 / 100</td>
-
-<td>87%</td>
-
-</tr>
-
-<tr>
-
-<td>7</td>
-
-<td>Michael</td>
-
-<td>Level 2</td>
-
-<td>85 / 100</td>
-
-<td>85%</td>
-
-</tr>
-
-<tr>
-
-<td>8</td>
-
-<td>Olivia</td>
-
-<td>Level 2</td>
-
-<td>83 / 100</td>
-
-<td>83%</td>
-
-</tr>
-
-<tr>
-
-<td>9</td>
-
-<td>Daniel</td>
-
-<td>Level 1</td>
-
-<td>81 / 100</td>
-
-<td>81%</td>
-
-</tr>
-
-<tr class="current-user">
-
-<td>10</td>
-
-<td>Shambhu Khatri (You)</td>
-
-<td>Level 1</td>
-
-<td>80 / 100</td>
-
-<td>80%</td>
-
-</tr>
-
-</tbody>
-
-</table>
+No Player
 
 </div>
 
-<div class="leaderboard-info">
+<div class="player-score" id="score1">
 
-<h3>🎯 Your Progress</h3>
-
-<p>Play quizzes, improve your score, and climb the leaderboard.</p>
+0
 
 </div>
 
 </div>
 
-</section>
-<footer class="footer">
+<div class="rank-item">
 
-<h2>Computer Science Learning</h2>
+<div class="rank-number">🥈 #2</div>
 
-<p>
+<div class="player-name">
 
-Compete • Learn • Improve • Achieve
-
-</p>
-
-<div class="social-icons">
-
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-
-<a href="#"><i class="fab fa-instagram"></i></a>
-
-<a href="#"><i class="fab fa-github"></i></a>
-
-<a href="#"><i class="fab fa-youtube"></i></a>
+Coming Soon
 
 </div>
 
-<p>
+<div class="player-score">
 
-© 2026 Computer Science Learning
+--
 
-</p>
+</div>
 
-<p>
+</div>
 
-Designed & Developed by
+<div class="rank-item">
 
-<strong>Shambhu Khatri (Suprim)</strong>
+<div class="rank-number">🥉 #3</div>
 
-</p>
+<div class="player-name">
 
-</footer>
+Coming Soon
 
-<script src="leaderboard.js"></script>
+</div>
+
+<div class="player-score">
+
+--
+
+</div>
+
+</div>
+
+<div class="rank-item">
+
+<div class="rank-number">4</div>
+
+<div class="player-name">
+
+Coming Soon
+
+</div>
+
+<div class="player-score">
+
+--
+
+</div>
+
+</div>
+
+<div class="rank-item">
+
+<div class="rank-number">5</div>
+
+<div class="player-name">
+
+Coming Soon
+
+</div>
+
+<div class="player-score">
+
+--
+
+</div>
+
+</div>
+<div class="rank-item">
+
+<div class="rank-number">6</div>
+
+<div class="player-name">Coming Soon</div>
+
+<div class="player-score">--</div>
+
+</div>
+
+<div class="rank-item">
+
+<div class="rank-number">7</div>
+
+<div class="player-name">Coming Soon</div>
+
+<div class="player-score">--</div>
+
+</div>
+
+<div class="rank-item">
+
+<div class="rank-number">8</div>
+
+<div class="player-name">Coming Soon</div>
+
+<div class="player-score">--</div>
+
+</div>
+
+<div class="rank-item">
+
+<div class="rank-number">9</div>
+
+<div class="player-name">Coming Soon</div>
+
+<div class="player-score">--</div>
+
+</div>
+
+<div class="rank-item">
+
+<div class="rank-number">10</div>
+
+<div class="player-name">Coming Soon</div>
+
+<div class="player-score">--</div>
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+
+<a href="quiz.html" class="btn">
+
+Play Quiz
+
+</a>
+
+<a href="index.html" class="btn-outline">
+
+Home
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let user = localStorage.getItem("currentUser") || "No Player";
+
+let score = localStorage.getItem("highScore") || 0;
+
+document.getElementById("player1").innerHTML = user;
+
+document.getElementById("score1").innerHTML = score;
+
+</script>
 
 </body>
 

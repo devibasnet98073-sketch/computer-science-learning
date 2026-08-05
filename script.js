@@ -1,188 +1,60 @@
-// ===========================
-// Typing Animation
-// ===========================
+// 1. Mobile Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-const typing = document.getElementById("typing");
-
-const words = [
-  "Frontend Developer",
-  "Computer Science Student",
-  "Web Designer",
-  "AI Enthusiast",
-  "Programmer"
-];
-
-let wordIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-function typeEffect() {
-
-  const currentWord = words[wordIndex];
-
-  if (!deleting) {
-    typing.textContent = currentWord.substring(0, charIndex++);
-  } else {
-    typing.textContent = currentWord.substring(0, charIndex--);
-  }
-
-  let speed = deleting ? 60 : 120;
-
-  if (!deleting && charIndex === currentWord.length + 1) {
-    deleting = true;
-    speed = 1500;
-  }
-
-  if (deleting && charIndex === 0) {
-    deleting = false;
-    wordIndex = (wordIndex + 1) % words.length;
-  }
-
-  setTimeout(typeEffect, speed);
-}
-
-typeEffect();
-
-
-// ===========================
-// Sticky Header
-// ===========================
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-  if (window.scrollY > 80) {
-    header.style.background = "#020617";
-    header.style.boxShadow = "0 5px 20px rgba(0,0,0,.4)";
-  } else {
-    header.style.background = "rgba(15,23,42,.85)";
-    header.style.boxShadow = "none";
-  }
-
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
 });
 
-
-// ===========================
-// Mobile Menu
-// ===========================
-
-const menuBtn = document.querySelector(".menu-btn");
-const nav = document.querySelector("nav");
-
-menuBtn.addEventListener("click", () => {
-
-  nav.classList.toggle("active");
-
+// 2. Light / Dark Theme Toggle
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    const icon = themeBtn.querySelector('i');
+    if (document.body.classList.contains('light-theme')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
 });
 
+// 3. Project Filtering System
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
 
-// ===========================
-// Close Menu on Click
-// ===========================
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-document.querySelectorAll("nav a").forEach(link => {
+        const filter = btn.getAttribute('data-filter');
 
-  link.addEventListener("click", () => {
-
-    nav.classList.remove("active");
-
-  });
-
+        projectCards.forEach(card => {
+            if (filter === 'all' || card.classList.contains(filter)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
 });
 
+// 4. Contact Form Submission
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
 
-// ===========================
-// Reveal Animation
-// ===========================
-
-const observer = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}
-
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formStatus.style.color = '#38bdf8';
+    formStatus.innerText = 'Dhanyabad! Tapainko message pathaiyo.';
+    contactForm.reset();
 });
 
-},{
-threshold:0.2
+// 5. Download CV Alert
+document.getElementById('download-cv').addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('CV file link tapainle script ma add garna saknuhunchha!');
 });
-
-document.querySelectorAll(".about,.skills,.projects,.contact,.card,.project-card").forEach((el)=>{
-
-el.classList.add("hidden");
-
-observer.observe(el);
-
-});
-
-
-// ===========================
-// Scroll Button
-// ===========================
-
-const topBtn = document.querySelector(".scroll-top");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>400){
-
-topBtn.style.opacity="1";
-topBtn.style.pointerEvents="auto";
-
-}else{
-
-topBtn.style.opacity="0";
-topBtn.style.pointerEvents="none";
-
-}
-
-});
-
-
-// ===========================
-// Welcome Message
-// ===========================
-
-window.onload = () => {
-
-console.log("Welcome to Shambhu Khatri Portfolio 🚀");
-
-};
-/* Mobile Menu */
-
-nav.active{
-display:block;
-position:absolute;
-top:80px;
-left:0;
-width:100%;
-background:#0f172a;
-padding:20px 0;
-}
-
-nav.active ul{
-flex-direction:column;
-align-items:center;
-}
-
-nav.active ul li{
-margin:15px 0;
-}
-
-/* Animation */
-
-.hidden{
-opacity:0;
-transform:translateY(60px);
-transition:all .8s ease;
-}
-
-.show{
-opacity:1;
-transform:translateY(0);
-}

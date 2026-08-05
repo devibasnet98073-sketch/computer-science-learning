@@ -850,3 +850,19 @@ transform:translateY(0px);
 .hero-image img{
 animation:float 4s ease-in-out infinite;
 }
+.nav-links.active{
+display:flex;
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#fff;
+flex-direction:column;
+text-align:center;
+padding:20px 0;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.nav-links.active li{
+margin:15px 0;
+}

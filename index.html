@@ -2,767 +2,943 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Shambhu Khatri | Computer Science Student</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#090909">
 
     <meta name="description"
-          content="Official portfolio of Shambhu Khatri, a Class 11 Computer Science student from Kasturi College.">
+          content="Portfolio of Shambhu Khatri — Class 11 Computer Science Student at Kasturi College.">
 
-    <link rel="stylesheet" href="style.css">
+    <title>Shambhu Khatri — Computer Science Student</title>
 
-    <!-- Google Font -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
-    <!-- Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================================
-         LOADING SCREEN
-    ========================================== -->
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
 
-    <div id="loader">
-        <div class="loader-content">
-            <div class="loader-orbit">
-                <span></span>
+<div class="bg">
+
+    <div class="bg-grid"></div>
+
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+</div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar" id="navbar">
+
+    <div class="nav-inner">
+
+        <a href="#home" class="brand">
+
+            <div class="brand-logo">
+                SK
             </div>
 
-            <h2>SK</h2>
-            <p>Loading Portfolio...</p>
-        </div>
-    </div>
+            <div class="brand-text">
+                Shambhu<span>.</span>
+            </div>
+
+        </a>
 
 
-    <!-- =========================================
-         BACKGROUND EFFECTS
-    ========================================== -->
+        <nav class="nav-links" id="navLinks">
 
-    <div class="background-effects">
-
-        <div class="glow glow-one"></div>
-        <div class="glow glow-two"></div>
-        <div class="glow glow-three"></div>
-
-        <div class="grid-background"></div>
-
-    </div>
-
-
-    <!-- =========================================
-         NAVIGATION
-    ========================================== -->
-
-    <header class="navbar" id="navbar">
-
-        <div class="nav-container">
-
-            <a href="#home" class="logo">
-                <span class="logo-box">SK</span>
-                <span class="logo-name">Shambhu<span>.</span></span>
+            <a href="#home" class="nav-link active">
+                Home
             </a>
 
+            <a href="#about" class="nav-link">
+                About
+            </a>
 
-            <nav class="nav-menu" id="navMenu">
+            <a href="#skills" class="nav-link">
+                Skills
+            </a>
 
-                <a href="#home" class="nav-link active">Home</a>
+            <a href="#work" class="nav-link">
+                Work
+            </a>
 
-                <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">
+                Contact
+            </a>
 
-                <a href="#skills" class="nav-link">Skills</a>
-
-                <a href="#work" class="nav-link">Work</a>
-
-                <a href="#contact" class="nav-link">Contact</a>
-
-            </nav>
-
-
-            <div class="nav-actions">
-
-                <button class="theme-toggle" id="themeToggle"
-                        aria-label="Toggle theme">
-
-                    <i class="fa-solid fa-moon"></i>
-
-                </button>
+        </nav>
 
 
-                <button class="menu-toggle" id="menuToggle"
-                        aria-label="Open menu">
+        <div class="nav-right">
 
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            <button
+                class="theme-btn"
+                id="themeBtn"
+                aria-label="Change theme">
 
-                </button>
+                <i class="fa-solid fa-moon"></i>
+
+            </button>
+
+
+            <button
+                class="mobile-btn"
+                id="mobileBtn"
+                aria-label="Open menu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-inner">
+
+
+        <!-- LEFT -->
+
+        <div class="hero-left reveal">
+
+
+            <div class="available">
+
+                <span class="available-dot"></span>
+
+                <span>
+                    Exploring • Learning • Building
+                </span>
+
+            </div>
+
+
+            <div class="hero-kicker">
+                HELLO, I'M
+            </div>
+
+
+            <h1 class="hero-title">
+
+                Shambhu
+
+                <span>Khatri</span>
+
+            </h1>
+
+
+            <div class="hero-role">
+
+                <span>I'm a</span>
+
+                <strong id="typing">
+                    Computer Science Student
+                </strong>
+
+                <b>|</b>
+
+            </div>
+
+
+            <p class="hero-description">
+
+                A Class 11 Computer Science student at
+                <strong>Kasturi College</strong>,
+                passionate about programming, web development,
+                UI/UX design, AI and creative technology.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a href="#work" class="btn btn-primary">
+
+                    <span>Explore My Work</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+                <a href="#about" class="btn btn-secondary">
+
+                    <span>About Me</span>
+
+                    <i class="fa-solid fa-user"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-social">
+
+                <a href="#work" title="My Work">
+                    <i class="fa-solid fa-code"></i>
+                </a>
+
+                <a href="#skills" title="My Skills">
+                    <i class="fa-solid fa-layer-group"></i>
+                </a>
+
+                <a href="#contact" title="Contact">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
 
             </div>
 
         </div>
 
-    </header>
 
 
+        <!-- RIGHT -->
 
-    <main>
-
-
-        <!-- =========================================
-             HOME / HERO
-        ========================================== -->
-
-        <section class="hero section" id="home">
-
-            <div class="hero-container">
+        <div class="hero-right reveal">
 
 
-                <!-- LEFT CONTENT -->
+            <!-- Decorative orbits -->
 
-                <div class="hero-content reveal">
+            <div class="orbit orbit-a"></div>
 
-                    <div class="status-badge">
+            <div class="orbit orbit-b"></div>
 
-                        <span class="status-dot"></span>
+            <div class="orbit orbit-c"></div>
 
-                        <span>Available for creative projects</span>
+
+            <!-- Stars -->
+
+            <span class="star star-1">✦</span>
+            <span class="star star-2">✦</span>
+            <span class="star star-3">✦</span>
+            <span class="star star-4">✦</span>
+
+
+            <!-- Rocket -->
+
+            <div class="rocket-wrap">
+
+                <div class="rocket-glow"></div>
+
+                <div class="rocket">
+
+                    <div class="rocket-top"></div>
+
+                    <div class="rocket-body">
+
+                        <div class="rocket-window"></div>
+
+                        <div class="rocket-line"></div>
 
                     </div>
 
+                    <div class="rocket-fin fin-left"></div>
 
-                    <p class="hero-small-text">
-                        HELLO, I'M
-                    </p>
+                    <div class="rocket-fin fin-right"></div>
+
+                    <div class="rocket-fire">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
-                    <h1 class="hero-title">
+            <!-- Floating UI Cards -->
 
-                        Shambhu
-                        <span>Khatri</span>
+            <div class="float-card float-code">
 
-                    </h1>
+                <div class="float-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <div>
+                    <strong>CODE</strong>
+                    <small>Build & Solve</small>
+                </div>
+
+            </div>
 
 
-                    <div class="typing-wrapper">
+            <div class="float-card float-design">
 
-                        <span>I'm a </span>
+                <div class="float-icon">
+                    <i class="fa-solid fa-pen-ruler"></i>
+                </div>
 
-                        <span id="typingText" class="typing-text">
-                            Computer Science Student
+                <div>
+                    <strong>UI / UX</strong>
+                    <small>Design & Create</small>
+                </div>
+
+            </div>
+
+
+            <div class="float-card float-ai">
+
+                <div class="float-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+
+                <div>
+                    <strong>AI + TECH</strong>
+                    <small>Explore Future</small>
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO -->
+
+            <div class="photo-box">
+
+                <div class="photo-ring ring-1"></div>
+                <div class="photo-ring ring-2"></div>
+
+                <img
+                    id="profilePhoto"
+                    src="file_00000000919471fdb59dd03375a49721.png"
+                    alt="Shambhu Khatri">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-bottom">
+
+        <span>SCROLL TO EXPLORE</span>
+
+        <div class="scroll-line"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section about" id="about">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <span class="eyebrow">
+                01 — ABOUT ME
+            </span>
+
+            <h2>
+                Student today.
+                <span>Creator tomorrow.</span>
+            </h2>
+
+            <p>
+                I enjoy turning curiosity into practical digital
+                experiences.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+
+            <div class="about-main reveal">
+
+                <span class="big-number">
+                    01
+                </span>
+
+                <p class="about-big">
+
+                    I'm <strong>Shambhu Khatri</strong>,
+                    a Class 11 Computer Science student
+                    studying at <strong>Kasturi College</strong>.
+
+                </p>
+
+                <p>
+
+                    Technology interests me because it gives me
+                    the ability to transform an idea into something
+                    people can actually use.
+
+                </p>
+
+                <p>
+
+                    I enjoy learning programming, designing websites,
+                    experimenting with UI/UX and exploring new
+                    technologies such as AI.
+
+                </p>
+
+
+                <div class="mindset">
+
+                    <div class="mindset-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            My learning mindset
+                        </strong>
+
+                        <span>
+                            Learn → Build → Experiment → Improve
                         </span>
 
-                        <span class="cursor">|</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="profile-card reveal">
+
+                <div class="card-label">
+                    QUICK PROFILE
+                </div>
+
+
+                <div class="profile-row">
+
+                    <span>NAME</span>
+                    <strong>Shambhu Khatri</strong>
+
+                </div>
+
+
+                <div class="profile-row">
+
+                    <span>CLASS</span>
+                    <strong>11</strong>
+
+                </div>
+
+
+                <div class="profile-row">
+
+                    <span>COLLEGE</span>
+                    <strong>Kasturi College</strong>
+
+                </div>
+
+
+                <div class="profile-row">
+
+                    <span>FIELD</span>
+                    <strong>Computer Science</strong>
+
+                </div>
+
+
+                <div class="profile-row">
+
+                    <span>LOCATION</span>
+                    <strong>Nepal</strong>
+
+                </div>
+
+
+                <div class="profile-status">
+
+                    <span></span>
+
+                    Currently learning & building
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INTERESTS
+===================================================== -->
+
+<section class="section interests">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <span class="eyebrow">
+                WHAT I'M INTO
+            </span>
+
+            <h2>
+                Curiosity is my
+                <span>fuel.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="interest-grid">
+
+
+            <article class="interest-card reveal">
+
+                <div class="interest-top">
+
+                    <span>01</span>
+
+                    <i class="fa-solid fa-code"></i>
+
+                </div>
+
+                <h3>Programming</h3>
+
+                <p>
+                    Learning logic, problem solving and
+                    turning ideas into working programs.
+                </p>
+
+            </article>
+
+
+            <article class="interest-card reveal">
+
+                <div class="interest-top">
+
+                    <span>02</span>
+
+                    <i class="fa-solid fa-globe"></i>
+
+                </div>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Creating responsive websites with
+                    modern interfaces and interactions.
+                </p>
+
+            </article>
+
+
+            <article class="interest-card reveal">
+
+                <div class="interest-top">
+
+                    <span>03</span>
+
+                    <i class="fa-solid fa-bezier-curve"></i>
+
+                </div>
+
+                <h3>UI / UX Design</h3>
+
+                <p>
+                    Exploring visual hierarchy, layouts,
+                    interaction and user experience.
+                </p>
+
+            </article>
+
+
+            <article class="interest-card reveal">
+
+                <div class="interest-top">
+
+                    <span>04</span>
+
+                    <i class="fa-solid fa-microchip"></i>
+
+                </div>
+
+                <h3>AI & Technology</h3>
+
+                <p>
+                    Exploring artificial intelligence and
+                    technologies shaping the future.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SKILLS
+===================================================== -->
+
+<section class="section skills" id="skills">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <span class="eyebrow">
+                02 — SKILLS
+            </span>
+
+            <h2>
+                Growing my
+                <span>toolbox.</span>
+            </h2>
+
+            <p>
+                Skills built through practice, projects and
+                continuous learning.
+            </p>
+
+        </div>
+
+
+        <div class="skills-box reveal">
+
+
+            <div class="skills-intro">
+
+                <span class="skill-count">
+                    SKILLS
+                </span>
+
+                <div class="huge-01">
+                    01
+                </div>
+
+                <h3>
+                    Learning by
+                    <span>building.</span>
+                </h3>
+
+            </div>
+
+
+            <div class="skill-list">
+
+
+                <div class="skill">
+
+                    <div class="skill-info">
+
+                        <div>
+                            <i class="fa-brands fa-html5"></i>
+                            HTML
+                        </div>
+
+                        <span>90%</span>
 
                     </div>
 
-
-                    <p class="hero-description">
-
-                        A curious Class 11 Computer Science student from
-                        <strong>Kasturi College</strong>, passionate about
-                        technology, programming, web development and
-                        creating meaningful digital experiences.
-
-                    </p>
-
-
-                    <div class="hero-buttons">
-
-                        <a href="#work" class="primary-btn">
-
-                            <span>Explore My Work</span>
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-
-                        <a href="#about" class="secondary-btn">
-
-                            <span>Discover More</span>
-
-                            <i class="fa-solid fa-compass"></i>
-
-                        </a>
-
-                    </div>
-
-
-                    <!-- SOCIAL ICONS -->
-
-                    <div class="social-row">
-
-                        <a href="#" aria-label="GitHub">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-
-                        <a href="#" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-
-                        <a href="#" aria-label="LinkedIn">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-
-                        <a href="#" aria-label="Email">
-                            <i class="fa-solid fa-envelope"></i>
-                        </a>
-
+                    <div class="skill-track">
+                        <span style="--width:90%"></span>
                     </div>
 
                 </div>
 
 
+                <div class="skill">
 
-                <!-- RIGHT VISUAL -->
+                    <div class="skill-info">
 
-                <div class="hero-visual reveal">
-
-
-                    <!-- Orbit -->
-
-                    <div class="orbit orbit-one"></div>
-                    <div class="orbit orbit-two"></div>
-                    <div class="orbit orbit-three"></div>
-
-
-                    <!-- Rocket -->
-
-                    <div class="rocket-scene">
-
-                        <div class="rocket-glow"></div>
-
-
-                        <div class="rocket">
-
-                            <div class="rocket-window"></div>
-
-                            <div class="rocket-body">
-
-                                <div class="rocket-fin left"></div>
-
-                                <div class="rocket-fin right"></div>
-
-                            </div>
-
-
-                            <div class="rocket-nose"></div>
-
-
-                            <div class="rocket-fire">
-
-                                <span></span>
-                                <span></span>
-                                <span></span>
-
-                            </div>
-
+                        <div>
+                            <i class="fa-brands fa-css3-alt"></i>
+                            CSS
                         </div>
 
+                        <span>88%</span>
 
-                        <!-- Floating Cards -->
+                    </div>
 
-                        <div class="floating-card card-code">
+                    <div class="skill-track">
+                        <span style="--width:88%"></span>
+                    </div>
 
-                            <i class="fa-solid fa-code"></i>
+                </div>
 
-                            <div>
-                                <strong>CODE</strong>
-                                <small>Build • Learn • Create</small>
-                            </div>
 
+                <div class="skill">
+
+                    <div class="skill-info">
+
+                        <div>
+                            <i class="fa-brands fa-js"></i>
+                            JavaScript
                         </div>
 
+                        <span>75%</span>
 
-                        <div class="floating-card card-ui">
+                    </div>
 
+                    <div class="skill-track">
+                        <span style="--width:75%"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="skill">
+
+                    <div class="skill-info">
+
+                        <div>
                             <i class="fa-solid fa-pen-ruler"></i>
-
-                            <div>
-                                <strong>UI / UX</strong>
-                                <small>Design with purpose</small>
-                            </div>
-
+                            UI / UX
                         </div>
 
-
-                        <div class="floating-card card-tech">
-
-                            <i class="fa-solid fa-microchip"></i>
-
-                            <div>
-                                <strong>TECH</strong>
-                                <small>Always exploring</small>
-                            </div>
-
-                        </div>
-
+                        <span>82%</span>
 
                     </div>
 
+                    <div class="skill-track">
+                        <span style="--width:82%"></span>
+                    </div>
 
-                    <!-- PHOTO -->
+                </div>
 
-                    <div class="profile-photo-wrapper">
 
-                        <div class="photo-ring ring-one"></div>
-                        <div class="photo-ring ring-two"></div>
+                <div class="skill">
 
-                        <img
-                            src="file_00000000919471fdb59dd03375a49721.png"
-                            alt="Shambhu Khatri"
-                            class="profile-photo"
-                        >
+                    <div class="skill-info">
 
+                        <div>
+                            <i class="fa-brands fa-github"></i>
+                            GitHub
+                        </div>
+
+                        <span>78%</span>
+
+                    </div>
+
+                    <div class="skill-track">
+                        <span style="--width:78%"></span>
                     </div>
 
                 </div>
 
             </div>
 
+        </div>
 
-            <!-- Scroll indicator -->
+    </div>
 
-            <a href="#about" class="scroll-down">
-
-                <span>Scroll to explore</span>
-
-                <i class="fa-solid fa-arrow-down"></i>
-
-            </a>
-
-        </section>
+</section>
 
 
 
-        <!-- =========================================
-             ABOUT SECTION
-        ========================================== -->
+<!-- =====================================================
+     FEATURED WORK
+===================================================== -->
 
-        <section class="about section" id="about">
+<section class="section work" id="work">
 
-            <div class="section-container">
+    <div class="container">
 
 
-                <div class="section-heading reveal">
+        <div class="section-head work-head reveal">
 
-                    <span class="section-label">01 — ABOUT ME</span>
+            <div>
 
-                    <h2>
-                        More than a student.
-                        <span>A creator in progress.</span>
-                    </h2>
+                <span class="eyebrow">
+                    03 — FEATURED WORK
+                </span>
+
+                <h2>
+                    Ideas made
+                    <span>real.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Projects and concepts created while learning,
+                experimenting and building.
+            </p>
+
+        </div>
+
+
+        <div class="projects">
+
+
+            <!-- PROJECT 01 -->
+
+            <article
+                class="project project-large reveal"
+                data-project="learning">
+
+                <div class="project-visual">
+
+                    <div class="visual-grid"></div>
+
+                    <div class="visual-icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+
+                    <span class="project-index">
+                        01
+                    </span>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <span class="project-type">
+                        WEB DEVELOPMENT
+                    </span>
+
+                    <h3>
+                        Computer Science
+                        Learning Platform
+                    </h3>
 
                     <p>
-                        I believe every line of code is an opportunity
-                        to turn an idea into something real.
+                        A student-focused digital platform concept
+                        for notes, programming resources, quizzes
+                        and learning tools.
                     </p>
 
-                </div>
 
+                    <div class="tags">
 
-                <div class="about-grid">
-
-
-                    <!-- ABOUT TEXT -->
-
-                    <div class="about-text reveal">
-
-                        <p class="large-text">
-
-                            I'm <strong>Shambhu Khatri</strong>, a
-                            Class 11 Computer Science student studying at
-                            <strong>Kasturi College</strong>.
-
-                        </p>
-
-
-                        <p>
-
-                            My journey in technology is driven by curiosity.
-                            I enjoy learning how websites work, experimenting
-                            with code, designing interfaces and exploring
-                            new technologies.
-
-                        </p>
-
-
-                        <p>
-
-                            I'm currently building my skills step by step
-                            while working on creative projects that help me
-                            understand technology through practical experience.
-
-                        </p>
-
-
-                        <div class="about-highlight">
-
-                            <div class="highlight-icon">
-
-                                <i class="fa-solid fa-lightbulb"></i>
-
-                            </div>
-
-                            <div>
-
-                                <strong>My mindset</strong>
-
-                                <p>
-                                    Learn → Build → Experiment → Improve
-                                </p>
-
-                            </div>
-
-                        </div>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
 
                     </div>
 
 
+                    <button class="project-btn">
 
-                    <!-- INFO CARD -->
+                        Explore Project
 
-                    <div class="info-card reveal">
+                        <i class="fa-solid fa-arrow-right"></i>
 
-                        <div class="info-card-top">
-
-                            <span class="mini-label">
-                                QUICK PROFILE
-                            </span>
-
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                        </div>
-
-
-                        <div class="profile-info">
-
-                            <div class="info-item">
-
-                                <span>NAME</span>
-
-                                <strong>Shambhu Khatri</strong>
-
-                            </div>
-
-
-                            <div class="info-item">
-
-                                <span>EDUCATION</span>
-
-                                <strong>Class 11</strong>
-
-                            </div>
-
-
-                            <div class="info-item">
-
-                                <span>COLLEGE</span>
-
-                                <strong>Kasturi College</strong>
-
-                            </div>
-
-
-                            <div class="info-item">
-
-                                <span>FIELD</span>
-
-                                <strong>Computer Science</strong>
-
-                            </div>
-
-
-                            <div class="info-item">
-
-                                <span>BASED IN</span>
-
-                                <strong>Nepal</strong>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    </button>
 
                 </div>
 
-            </div>
-
-        </section>
+            </article>
 
 
 
-        <!-- =========================================
-             INTERESTS
-        ========================================== -->
+            <!-- PROJECT 02 -->
 
-        <section class="interests section">
+            <article
+                class="project reveal"
+                data-project="quiz">
 
-            <div class="section-container">
+                <div class="project-visual">
 
-                <div class="section-heading reveal">
+                    <div class="visual-grid"></div>
 
-                    <span class="section-label">
-                        WHAT I LOVE
+                    <div class="visual-icon">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+
+                    <span class="project-index">
+                        02
                     </span>
 
-                    <h2>
-                        Curiosity drives
-                        <span>everything I build.</span>
-                    </h2>
-
                 </div>
 
 
-                <div class="interest-grid">
+                <div class="project-info">
 
-
-                    <div class="interest-card reveal">
-
-                        <div class="interest-number">01</div>
-
-                        <div class="interest-icon">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-
-                        <h3>Programming</h3>
-
-                        <p>
-                            Understanding logic, solving problems
-                            and turning ideas into working programs.
-                        </p>
-
-                    </div>
-
-
-                    <div class="interest-card reveal">
-
-                        <div class="interest-number">02</div>
-
-                        <div class="interest-icon">
-                            <i class="fa-solid fa-globe"></i>
-                        </div>
-
-                        <h3>Web Development</h3>
-
-                        <p>
-                            Creating modern, responsive and interactive
-                            websites with great user experiences.
-                        </p>
-
-                    </div>
-
-
-                    <div class="interest-card reveal">
-
-                        <div class="interest-number">03</div>
-
-                        <div class="interest-icon">
-                            <i class="fa-solid fa-bezier-curve"></i>
-                        </div>
-
-                        <h3>UI / UX Design</h3>
-
-                        <p>
-                            Exploring clean interfaces, visual hierarchy
-                            and experiences that feel natural to use.
-                        </p>
-
-                    </div>
-
-
-                    <div class="interest-card reveal">
-
-                        <div class="interest-number">04</div>
-
-                        <div class="interest-icon">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-
-                        <h3>AI & Technology</h3>
-
-                        <p>
-                            Exploring artificial intelligence and the
-                            technologies shaping the future.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             SKILLS
-        ========================================== -->
-
-        <section class="skills section" id="skills">
-
-            <div class="section-container">
-
-
-                <div class="section-heading reveal">
-
-                    <span class="section-label">
-                        02 — SKILLS
+                    <span class="project-type">
+                        JAVASCRIPT
                     </span>
 
-                    <h2>
-                        Tools I use to
-                        <span>bring ideas alive.</span>
-                    </h2>
-
-                </div>
-
-
-                <div class="skills-layout">
-
-
-                    <div class="skills-intro reveal">
-
-                        <div class="skill-big-number">
-                            01
-                        </div>
-
-                        <h3>
-                            Still learning.
-                            <br>
-                            Always improving.
-                        </h3>
-
-                        <p>
-                            My skillset is growing through practice,
-                            experiments and real projects.
-                        </p>
-
-                    </div>
-
-
-                    <div class="skills-list reveal">
-
-
-                        <div class="skill-row">
-
-                            <div class="skill-name">
-                                <i class="fa-brands fa-html5"></i>
-                                <span>HTML</span>
-                            </div>
-
-                            <div class="skill-bar">
-                                <span style="width: 92%"></span>
-                            </div>
-
-                            <strong>92%</strong>
-
-                        </div>
-
-
-                        <div class="skill-row">
-
-                            <div class="skill-name">
-                                <i class="fa-brands fa-css3-alt"></i>
-                                <span>CSS</span>
-                            </div>
-
-                            <div class="skill-bar">
-                                <span style="width: 88%"></span>
-                            </div>
-
-                            <strong>88%</strong>
-
-                        </div>
-
-
-                        <div class="skill-row">
-
-                            <div class="skill-name">
-                                <i class="fa-brands fa-js"></i>
-                                <span>JavaScript</span>
-                            </div>
-
-                            <div class="skill-bar">
-                                <span style="width: 75%"></span>
-                            </div>
-
-                            <strong>75%</strong>
-
-                        </div>
-
-
-                        <div class="skill-row">
-
-                            <div class="skill-name">
-                                <i class="fa-solid fa-palette"></i>
-                                <span>UI / UX</span>
-                            </div>
-
-                            <div class="skill-bar">
-                                <span style="width: 82%"></span>
-                            </div>
-
-                            <strong>82%</strong>
-
-                        </div>
-
-
-                        <div class="skill-row">
-
-                            <div class="skill-name">
-                                <i class="fa-brands fa-github"></i>
-                                <span>GitHub</span>
-                            </div>
-
-                            <div class="skill-bar">
-                                <span style="width: 78%"></span>
-                            </div>
-
-                            <strong>78%</strong>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             FEATURED WORK
-        ========================================== -->
-
-        <section class="work section" id="work">
-
-            <div class="section-container">
-
-
-                <div class="section-heading work-heading reveal">
-
-                    <span class="section-label">
-                        03 — FEATURED WORK
-                    </span>
-
-                    <h2>
-                        Things I've
-                        <span>built & explored.</span>
-                    </h2>
+                    <h3>
+                        Interactive Quiz
+                    </h3>
 
                     <p>
-                        A collection of projects created while learning,
-                        experimenting and turning ideas into reality.
+                        A quiz concept with questions, timer,
+                        scoring and interactive results.
                     </p>
+
+
+                    <div class="tags">
+
+                        <span>JavaScript</span>
+                        <span>UI</span>
+
+                    </div>
+
+
+                    <button class="project-btn">
+
+                        Explore Project
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </artic

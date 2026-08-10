@@ -1,380 +1,1080 @@
-// ==========================
-// LOADING SCREEN
-// ==========================
+/* =========================================================
+   SHAMBHU KHATRI — PREMIUM PORTFOLIO
+   SCRIPT.JS
+========================================================= */
 
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-const loader = document.getElementById("loader");
 
-loader.style.opacity = "0";
+    /* =====================================================
+       01 — LOADING SCREEN
+    ===================================================== */
 
-setTimeout(() => {
+    const loader = document.getElementById("loader");
 
-loader.style.display = "none";
+    window.addEventListener("load", () => {
 
-}, 600);
+        setTimeout(() => {
+
+            loader.classList.add("hide");
+
+        }, 900);
+
+    });
+
+
+
+    /* =====================================================
+       02 — NAVBAR SCROLL EFFECT
+    ===================================================== */
+
+    const navbar = document.getElementById("navbar");
+
+    function handleNavbar() {
+
+        if (window.scrollY > 50) {
+
+            navbar.classList.add("scrolled");
+
+        } else {
+
+            navbar.classList.remove("scrolled");
+
+        }
+
+    }
+
+    window.addEventListener("scroll", handleNavbar);
+
+    handleNavbar();
+
+
+
+    /* =====================================================
+       03 — MOBILE MENU
+    ===================================================== */
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const navMenu =
+        document.getElementById("navMenu");
+
+    const navLinks =
+        document.querySelectorAll(".nav-link");
+
+
+    menuToggle.addEventListener("click", () => {
+
+        navMenu.classList.toggle("open");
+
+    });
+
+
+    navLinks.forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navMenu.classList.remove("open");
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       04 — DARK / LIGHT MODE
+    ===================================================== */
+
+    const themeToggle =
+        document.getElementById("themeToggle");
+
+    const themeIcon =
+        themeToggle.querySelector("i");
+
+
+    const savedTheme =
+        localStorage.getItem("portfolio-theme");
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeIcon.classList.remove("fa-moon");
+
+        themeIcon.classList.add("fa-sun");
+
+    }
+
+
+    themeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+
+        const isDark =
+            document.body.classList.contains("dark");
+
+
+        if (isDark) {
+
+            themeIcon.classList.remove("fa-moon");
+
+            themeIcon.classList.add("fa-sun");
+
+            localStorage.setItem(
+                "portfolio-theme",
+                "dark"
+            );
+
+        } else {
+
+            themeIcon.classList.remove("fa-sun");
+
+            themeIcon.classList.add("fa-moon");
+
+            localStorage.setItem(
+                "portfolio-theme",
+                "light"
+            );
+
+        }
+
+    });
+
+
+
+    /* =====================================================
+       05 — TYPING ANIMATION
+    ===================================================== */
+
+    const typingText =
+        document.getElementById("typingText");
+
+
+    const words = [
+
+        "Computer Science Student",
+
+        "Web Developer",
+
+        "UI / UX Explorer",
+
+        "Creative Learner",
+
+        "Tech Enthusiast",
+
+        "Future Developer"
+
+    ];
+
+
+    let wordIndex = 0;
+
+    let characterIndex = 0;
+
+    let deleting = false;
+
+
+    function typeEffect() {
+
+        const currentWord =
+            words[wordIndex];
+
+
+        if (!deleting) {
+
+            typingText.textContent =
+                currentWord.substring(
+                    0,
+                    characterIndex + 1
+                );
+
+            characterIndex++;
+
+
+            if (
+                characterIndex ===
+                currentWord.length
+            ) {
+
+                deleting = true;
+
+                setTimeout(
+                    typeEffect,
+                    1600
+                );
+
+                return;
+
+            }
+
+        } else {
+
+            typingText.textContent =
+                currentWord.substring(
+                    0,
+                    characterIndex - 1
+                );
+
+            characterIndex--;
+
+
+            if (characterIndex === 0) {
+
+                deleting = false;
+
+                wordIndex =
+                    (wordIndex + 1)
+                    % words.length;
+
+            }
+
+        }
+
+
+        const speed =
+            deleting ? 45 : 75;
+
+
+        setTimeout(
+            typeEffect,
+            speed
+        );
+
+    }
+
+
+    setTimeout(
+        typeEffect,
+        1200
+    );
+
+
+
+    /* =====================================================
+       06 — SCROLL REVEAL ANIMATION
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "active"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+
+    /* =====================================================
+       07 — STAGGER CARD ANIMATION
+    ===================================================== */
+
+    const cardGroups = [
+
+        ".interest-card",
+
+        ".project-card",
+
+        ".skill-row"
+
+    ];
+
+
+    cardGroups.forEach(selector => {
+
+        const cards =
+            document.querySelectorAll(selector);
+
+
+        cards.forEach((card, index) => {
+
+            card.style.transitionDelay =
+                `${index * 0.08}s`;
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       08 — ACTIVE NAVIGATION
+    ===================================================== */
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+
+    function updateActiveNav() {
+
+        let currentSection = "";
+
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 180;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY <
+                sectionTop + sectionHeight
+            ) {
+
+                currentSection =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+
+            const target =
+                link.getAttribute("href");
+
+
+            if (
+                target ===
+                `#${currentSection}`
+            ) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNav
+    );
+
+
+    updateActiveNav();
+
+
+
+    /* =====================================================
+       09 — BACK TO TOP
+    ===================================================== */
+
+    const backToTop =
+        document.getElementById("backToTop");
+
+
+    function handleBackToTop() {
+
+        if (window.scrollY > 600) {
+
+            backToTop.classList.add("show");
+
+        } else {
+
+            backToTop.classList.remove("show");
+
+        }
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        handleBackToTop
+    );
+
+
+    backToTop.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+
+
+    /* =====================================================
+       10 — SMOOTH INTERNAL LINKS
+    ===================================================== */
+
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                function(event) {
+
+                    const targetId =
+                        this.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        targetId === "#" ||
+                        !targetId
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (target) {
+
+                        event.preventDefault();
+
+
+                        target.scrollIntoView({
+
+                            behavior: "smooth",
+
+                            block: "start"
+
+                        });
+
+                    }
+
+                }
+            );
+
+        });
+
+
+
+    /* =====================================================
+       11 — ROCKET PARALLAX
+    ===================================================== */
+
+    const rocketScene =
+        document.querySelector(
+            ".rocket-scene"
+        );
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (!rocketScene) return;
+
+
+            const scrollValue =
+                window.scrollY;
+
+
+            if (scrollValue < 900) {
+
+                rocketScene.style.transform =
+                    `translateY(${scrollValue * 0.08}px)`;
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       12 — MOUSE MOVEMENT EFFECT
+    ===================================================== */
+
+    const heroVisual =
+        document.querySelector(
+            ".hero-visual"
+        );
+
+
+    if (
+        heroVisual &&
+        window.innerWidth > 800
+    ) {
+
+        heroVisual.addEventListener(
+            "mousemove",
+            (event) => {
+
+                const rect =
+                    heroVisual.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX -
+                    rect.left;
+
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+
+                const centerX =
+                    rect.width / 2;
+
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const moveX =
+                    (x - centerX) / 35;
+
+
+                const moveY =
+                    (y - centerY) / 35;
+
+
+                rocketScene.style.transform =
+                    `translate(${moveX}px, ${moveY}px)`;
+
+            }
+        );
+
+
+        heroVisual.addEventListener(
+            "mouseleave",
+            () => {
+
+                rocketScene.style.transform =
+                    "translate(0,0)";
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       13 — PROJECT CARD TILT
+    ===================================================== */
+
+    const projectCards =
+        document.querySelectorAll(
+            ".project-card"
+        );
+
+
+    if (window.innerWidth > 800) {
+
+        projectCards.forEach(card => {
+
+            card.addEventListener(
+                "mousemove",
+                event => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+
+                    const x =
+                        event.clientX -
+                        rect.left;
+
+
+                    const y =
+                        event.clientY -
+                        rect.top;
+
+
+                    const centerX =
+                        rect.width / 2;
+
+
+                    const centerY =
+                        rect.height / 2;
+
+
+                    const rotateX =
+                        ((y - centerY) /
+                            centerY) * -2;
+
+
+                    const rotateY =
+                        ((x - centerX) /
+                            centerX) * 2;
+
+
+                    card.style.transform =
+                        `perspective(900px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)
+                         translateY(-8px)`;
+
+                }
+            );
+
+
+            card.addEventListener(
+                "mouseleave",
+                () => {
+
+                    card.style.transform =
+                        "";
+
+                }
+            );
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       14 — SKILL NUMBER COUNTER
+    ===================================================== */
+
+    const skillNumbers =
+        document.querySelectorAll(
+            ".skill-row strong"
+        );
+
+
+    const skillSection =
+        document.querySelector(
+            "#skills"
+        );
+
+
+    let skillsAnimated = false;
+
+
+    function animateSkillNumbers() {
+
+        if (!skillSection) return;
+
+
+        const rect =
+            skillSection.getBoundingClientRect();
+
+
+        if (
+            rect.top <
+            window.innerHeight * .75 &&
+            !skillsAnimated
+        ) {
+
+            skillsAnimated = true;
+
+
+            skillNumbers.forEach(number => {
+
+                const finalValue =
+                    parseInt(
+                        number.textContent
+                    );
+
+
+                let current = 0;
+
+
+                const interval =
+                    setInterval(
+                        () => {
+
+                            current += 1;
+
+
+                            number.textContent =
+                                `${current}%`;
+
+
+                            if (
+                                current >=
+                                finalValue
+                            ) {
+
+                                clearInterval(
+                                    interval
+                                );
+
+                            }
+
+                        },
+                        12
+                    );
+
+            });
+
+        }
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        animateSkillNumbers
+    );
+
+
+    animateSkillNumbers();
+
+
+
+    /* =====================================================
+       15 — CURSOR GLOW
+    ===================================================== */
+
+    const cursorGlow =
+        document.createElement("div");
+
+
+    cursorGlow.className =
+        "cursor-glow";
+
+
+    document.body.appendChild(
+        cursorGlow
+    );
+
+
+    const cursorStyle =
+        document.createElement("style");
+
+
+    cursorStyle.textContent = `
+
+        .cursor-glow {
+
+            position: fixed;
+
+            width: 180px;
+
+            height: 180px;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(120,120,120,.10),
+                    transparent 70%
+                );
+
+            transform:
+                translate(-50%,-50%);
+
+            z-index: 9998;
+
+            opacity: 0;
+
+            transition:
+                opacity .3s ease;
+
+        }
+
+        @media (max-width: 800px) {
+
+            .cursor-glow {
+
+                display: none;
+
+            }
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        cursorStyle
+    );
+
+
+    if (window.innerWidth > 800) {
+
+        document.addEventListener(
+            "mousemove",
+            event => {
+
+                cursorGlow.style.left =
+                    `${event.clientX}px`;
+
+                cursorGlow.style.top =
+                    `${event.clientY}px`;
+
+                cursorGlow.style.opacity =
+                    "1";
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       16 — BUTTON RIPPLE EFFECT
+    ===================================================== */
+
+    const buttons =
+        document.querySelectorAll(
+            ".primary-btn, .secondary-btn, .contact-button"
+        );
+
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(event) {
+
+                const ripple =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                ripple.className =
+                    "button-ripple";
+
+
+                const rect =
+                    button.getBoundingClientRect();
+
+
+                const size =
+                    Math.max(
+                        rect.width,
+                        rect.height
+                    );
+
+
+                ripple.style.width =
+                    `${size}px`;
+
+                ripple.style.height =
+                    `${size}px`;
+
+                ripple.style.left =
+                    `${event.clientX - rect.left - size / 2}px`;
+
+                ripple.style.top =
+                    `${event.clientY - rect.top - size / 2}px`;
+
+
+                button.appendChild(
+                    ripple
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        ripple.remove();
+
+                    },
+                    600
+                );
+
+            }
+        );
+
+    });
+
+
+    const rippleStyle =
+        document.createElement("style");
+
+
+    rippleStyle.textContent = `
+
+        .primary-btn,
+        .secondary-btn,
+        .contact-button {
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        .button-ripple {
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.18);
+
+            transform:
+                scale(0);
+
+            animation:
+                rippleAnimation .6s linear;
+
+            pointer-events: none;
+
+        }
+
+        @keyframes rippleAnimation {
+
+            to {
+
+                transform: scale(2.5);
+
+                opacity: 0;
+
+            }
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        rippleStyle
+    );
+
+
+
+    /* =====================================================
+       17 — IMAGE LOAD EFFECT
+    ===================================================== */
+
+    const profilePhoto =
+        document.querySelector(
+            ".profile-photo"
+        );
+
+
+    if (profilePhoto) {
+
+        profilePhoto.addEventListener(
+            "load",
+            () => {
+
+                profilePhoto.classList.add(
+                    "loaded"
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       18 — CLOSE MOBILE MENU OUTSIDE CLICK
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                navMenu.classList.contains("open") &&
+                !navMenu.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+
+                navMenu.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       19 — ESCAPE KEY
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+
+                navMenu.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       20 — CONSOLE MESSAGE
+    ===================================================== */
+
+    console.log(
+        "%c🚀 Shambhu Khatri Portfolio",
+        "font-size:18px;font-weight:bold;"
+    );
+
+    console.log(
+        "%cBuilt with HTML • CSS • JavaScript",
+        "font-size:12px;"
+    );
 
 });
-
-// ==========================
-// AOS ANIMATION
-// ==========================
-
-AOS.init({
-
-duration: 1000,
-
-once: true,
-
-offset: 100,
-
-});
-
-// ==========================
-// TYPING EFFECT
-// ==========================
-
-new Typed("#typing", {
-
-strings: [
-
-"Computer Science Student",
-
-"Frontend Developer",
-
-"Web Designer",
-
-"Creative Thinker"
-
-],
-
-typeSpeed: 70,
-
-backSpeed: 45,
-
-backDelay: 1500,
-
-loop: true
-
-});
-
-// ==========================
-// SCROLL PROGRESS BAR
-// ==========================
-
-window.addEventListener("scroll", () => {
-
-const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-
-const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-const scrolled = (winScroll / height) * 100;
-
-document.getElementById("progressBar").style.width = scrolled + "%";
-
-});
-
-// ==========================
-// BACK TO TOP BUTTON
-// ==========================
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-
-if (window.scrollY > 300) {
-
-topBtn.style.display = "block";
-
-} else {
-
-topBtn.style.display = "none";
-
-}
-
-});
-
-topBtn.addEventListener("click", () => {
-
-window.scrollTo({
-
-top: 0,
-
-behavior: "smooth"
-
-});
-
-});
-// ==========================
-// ANIMATED COUNTERS
-// ==========================
-
-const counters = document.querySelectorAll(".counter");
-
-counters.forEach(counter => {
-
-const updateCounter = () => {
-
-const target = +counter.getAttribute("data-target");
-
-const current = +counter.innerText;
-
-const increment = Math.ceil(target / 100);
-
-if (current < target) {
-
-counter.innerText = current + increment;
-
-setTimeout(updateCounter, 20);
-
-} else {
-
-counter.innerText = target;
-
-}
-
-};
-
-updateCounter();
-
-});
-
-// ==========================
-// MOBILE MENU
-// ==========================
-
-const menu = document.getElementById("menu");
-const navLinks = document.querySelector(".nav-links");
-
-menu.addEventListener("click", () => {
-
-navLinks.classList.toggle("active");
-
-});
-
-// ==========================
-// CLOSE MENU AFTER CLICK
-// ==========================
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-link.addEventListener("click", () => {
-
-navLinks.classList.remove("active");
-
-});
-
-});
-
-// ==========================
-// SMOOTH NAVIGATION
-// ==========================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-anchor.addEventListener("click", function(e) {
-
-e.preventDefault();
-
-const target = document.querySelector(this.getAttribute("href"));
-
-if(target){
-
-target.scrollIntoView({
-
-behavior: "smooth"
-
-});
-
-}
-
-});
-
-});
-
-// ==========================
-// CONTACT FORM
-// ==========================
-
-const contactForm = document.getElementById("contactForm");
-
-contactForm.addEventListener("submit", function(e){
-
-e.preventDefault();
-
-alert("Thank you! Your message has been sent successfully.");
-
-contactForm.reset();
-
-});
-// ==========================
-// NAVBAR SHADOW ON SCROLL
-// ==========================
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-if (window.scrollY > 50) {
-
-header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.08)";
-
-} else {
-
-header.style.boxShadow = "none";
-
-}
-
-});
-
-// ==========================
-// ACTIVE NAVIGATION
-// ==========================
-
-const sections = document.querySelectorAll("section");
-const navItems = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-
-let current = "";
-
-sections.forEach(section => {
-
-const sectionTop = section.offsetTop - 120;
-
-if (pageYOffset >= sectionTop) {
-
-current = section.getAttribute("id");
-
-}
-
-});
-
-navItems.forEach(link => {
-
-link.classList.remove("active");
-
-if (link.getAttribute("href") === "#" + current) {
-
-link.classList.add("active");
-
-}
-
-});
-
-});
-
-// ==========================
-// FLOATING PARTICLES
-// ==========================
-
-tsParticles.load("particles", {
-
-fullScreen: false,
-
-background: {
-
-color: {
-
-value: "transparent"
-
-}
-
-},
-
-particles: {
-
-number: {
-
-value: 35
-
-},
-
-color: {
-
-value: "#d9d9d9"
-
-},
-
-shape: {
-
-type: "circle"
-
-},
-
-opacity: {
-
-value: 0.5
-
-},
-
-size: {
-
-value: {
-
-min: 2,
-
-max: 5
-
-}
-
-},
-
-move: {
-
-enable: true,
-
-speed: 1,
-
-direction: "none",
-
-outModes: {
-
-default: "out"
-
-}
-
-},
-
-links: {
-
-enable: true,
-
-distance: 150,
-
-color: "#e5e5e5",
-
-opacity: 0.5,
-
-width: 1
-
-}
-
-}
-
-});
-
-// ==========================
-// IMAGE HOVER EFFECT
-// ==========================
-
-const profileImage = document.querySelector(".hero-image img");
-
-profileImage.addEventListener("mouseenter", () => {
-
-profileImage.style.transform = "scale(1.05) rotate(2deg)";
-
-});
-
-profileImage.addEventListener("mouseleave", () => {
-
-profileImage.style.transform = "scale(1) rotate(0deg)";
-
-});
-
-// ==========================
-// CONSOLE MESSAGE
-// ==========================
-
-console.log("%cWelcome to Shambhu Khatri Portfolio",
-"font-size:20px;font-weight:bold;color:#111;");

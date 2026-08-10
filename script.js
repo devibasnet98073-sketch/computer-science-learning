@@ -5,48 +5,114 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
     /* =====================================================
-       01 — LOADING SCREEN
+       01 — SELECTORS
     ===================================================== */
 
-    const loader = document.getElementById("loader");
+    const body = document.body;
 
-    window.addEventListener("load", () => {
+    const navbar =
+        document.querySelector(".navbar");
 
-        setTimeout(() => {
+    const mobileBtn =
+        document.querySelector(".mobile-btn");
 
-            loader.classList.add("hide");
+    const navLinks =
+        document.querySelector(".nav-links");
 
-        }, 900);
+    const themeBtn =
+        document.querySelector(".theme-btn");
 
-    });
+    const backTop =
+        document.querySelector(".back-top");
+
+    const rocketWrap =
+        document.querySelector(".rocket-wrap");
+
+    const typingElement =
+        document.querySelector(".typing");
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navItems =
+        document.querySelectorAll(".nav-link");
 
 
 
     /* =====================================================
-       02 — NAVBAR SCROLL EFFECT
+       02 — TYPING ANIMATION
     ===================================================== */
 
-    const navbar = document.getElementById("navbar");
+    if (typingElement) {
 
-    function handleNavbar() {
+        const words = [
+            "Computer Science Student",
+            "Future Developer",
+            "UI/UX Explorer",
+            "Creative Learner",
+            "Tech Enthusiast"
+        ];
 
-        if (window.scrollY > 50) {
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
 
-            navbar.classList.add("scrolled");
+        function typeEffect() {
 
-        } else {
+            const currentWord =
+                words[wordIndex];
 
-            navbar.classList.remove("scrolled");
+            if (!deleting) {
 
+                typingElement.textContent =
+                    currentWord.substring(
+                        0,
+                        charIndex + 1
+                    );
+
+                charIndex++;
+
+                if (charIndex === currentWord.length) {
+
+                    deleting = true;
+
+                    setTimeout(
+                        typeEffect,
+                        1600
+                    );
+
+                    return;
+                }
+
+            } else {
+
+                typingElement.textContent =
+                    currentWord.substring(
+                        0,
+                        charIndex - 1
+                    );
+
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    wordIndex =
+                        (wordIndex + 1) %
+                        words.length;
+                }
+            }
+
+            setTimeout(
+                typeEffect,
+                deleting ? 45 : 80
+            );
         }
 
+        typeEffect();
     }
-
-    window.addEventListener("scroll", handleNavbar);
-
-    handleNavbar();
 
 
 
@@ -54,568 +120,731 @@ document.addEventListener("DOMContentLoaded", () => {
        03 — MOBILE MENU
     ===================================================== */
 
-    const menuToggle =
-        document.getElementById("menuToggle");
+    if (mobileBtn && navLinks) {
 
-    const navMenu =
-        document.getElementById("navMenu");
+        mobileBtn.addEventListener(
+            "click",
+            () => {
 
-    const navLinks =
-        document.querySelectorAll(".nav-link");
+                navLinks.classList.toggle("open");
 
-
-    menuToggle.addEventListener("click", () => {
-
-        navMenu.classList.toggle("open");
-
-    });
-
-
-    navLinks.forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navMenu.classList.remove("open");
-
-        });
-
-    });
-
-
-
-    /* =====================================================
-       04 — DARK / LIGHT MODE
-    ===================================================== */
-
-    const themeToggle =
-        document.getElementById("themeToggle");
-
-    const themeIcon =
-        themeToggle.querySelector("i");
-
-
-    const savedTheme =
-        localStorage.getItem("portfolio-theme");
-
-
-    if (savedTheme === "dark") {
-
-        document.body.classList.add("dark");
-
-        themeIcon.classList.remove("fa-moon");
-
-        themeIcon.classList.add("fa-sun");
-
-    }
-
-
-    themeToggle.addEventListener("click", () => {
-
-        document.body.classList.toggle("dark");
-
-
-        const isDark =
-            document.body.classList.contains("dark");
-
-
-        if (isDark) {
-
-            themeIcon.classList.remove("fa-moon");
-
-            themeIcon.classList.add("fa-sun");
-
-            localStorage.setItem(
-                "portfolio-theme",
-                "dark"
-            );
-
-        } else {
-
-            themeIcon.classList.remove("fa-sun");
-
-            themeIcon.classList.add("fa-moon");
-
-            localStorage.setItem(
-                "portfolio-theme",
-                "light"
-            );
-
-        }
-
-    });
-
-
-
-    /* =====================================================
-       05 — TYPING ANIMATION
-    ===================================================== */
-
-    const typingText =
-        document.getElementById("typingText");
-
-
-    const words = [
-
-        "Computer Science Student",
-
-        "Web Developer",
-
-        "UI / UX Explorer",
-
-        "Creative Learner",
-
-        "Tech Enthusiast",
-
-        "Future Developer"
-
-    ];
-
-
-    let wordIndex = 0;
-
-    let characterIndex = 0;
-
-    let deleting = false;
-
-
-    function typeEffect() {
-
-        const currentWord =
-            words[wordIndex];
-
-
-        if (!deleting) {
-
-            typingText.textContent =
-                currentWord.substring(
-                    0,
-                    characterIndex + 1
+                mobileBtn.classList.toggle(
+                    "active"
                 );
-
-            characterIndex++;
-
-
-            if (
-                characterIndex ===
-                currentWord.length
-            ) {
-
-                deleting = true;
-
-                setTimeout(
-                    typeEffect,
-                    1600
-                );
-
-                return;
-
             }
-
-        } else {
-
-            typingText.textContent =
-                currentWord.substring(
-                    0,
-                    characterIndex - 1
-                );
-
-            characterIndex--;
-
-
-            if (characterIndex === 0) {
-
-                deleting = false;
-
-                wordIndex =
-                    (wordIndex + 1)
-                    % words.length;
-
-            }
-
-        }
-
-
-        const speed =
-            deleting ? 45 : 75;
-
-
-        setTimeout(
-            typeEffect,
-            speed
         );
 
+        navItems.forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+                    mobileBtn.classList.remove(
+                        "active"
+                    );
+                }
+            );
+        });
+
+        document.addEventListener(
+            "click",
+            event => {
+
+                const clickedInside =
+                    navLinks.contains(
+                        event.target
+                    ) ||
+                    mobileBtn.contains(
+                        event.target
+                    );
+
+                if (!clickedInside) {
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+                    mobileBtn.classList.remove(
+                        "active"
+                    );
+                }
+            }
+        );
     }
-
-
-    setTimeout(
-        typeEffect,
-        1200
-    );
 
 
 
     /* =====================================================
-       06 — SCROLL REVEAL ANIMATION
+       04 — DARK / LIGHT THEME
+    ===================================================== */
+
+    if (themeBtn) {
+
+        const savedTheme =
+            localStorage.getItem(
+                "shambhu-theme"
+            );
+
+        if (savedTheme === "light") {
+            body.classList.add("light");
+        }
+
+        updateThemeIcon();
+
+        themeBtn.addEventListener(
+            "click",
+            () => {
+
+                body.classList.toggle(
+                    "light"
+                );
+
+                const isLight =
+                    body.classList.contains(
+                        "light"
+                    );
+
+                localStorage.setItem(
+                    "shambhu-theme",
+                    isLight
+                        ? "light"
+                        : "dark"
+                );
+
+                updateThemeIcon();
+            }
+        );
+    }
+
+
+    function updateThemeIcon() {
+
+        if (!themeBtn) return;
+
+        const icon =
+            themeBtn.querySelector("i");
+
+        if (!icon) return;
+
+        if (body.classList.contains("light")) {
+
+            icon.className =
+                "fa-solid fa-moon";
+
+        } else {
+
+            icon.className =
+                "fa-solid fa-sun";
+        }
+    }
+
+
+
+    /* =====================================================
+       05 — NAVBAR SCROLL EFFECT
+    ===================================================== */
+
+    function handleNavbar() {
+
+        if (!navbar) return;
+
+        if (window.scrollY > 40) {
+
+            navbar.classList.add(
+                "scrolled"
+            );
+
+        } else {
+
+            navbar.classList.remove(
+                "scrolled"
+            );
+        }
+    }
+
+    window.addEventListener(
+        "scroll",
+        handleNavbar
+    );
+
+    handleNavbar();
+
+
+
+    /* =====================================================
+       06 — SCROLL REVEAL
     ===================================================== */
 
     const revealElements =
-        document.querySelectorAll(".reveal");
-
-
-    const revealObserver =
-        new IntersectionObserver(
-            (entries, observer) => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add(
-                            "active"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12
-            }
+        document.querySelectorAll(
+            ".reveal"
         );
 
+    if (revealElements.length) {
 
-    revealElements.forEach(element => {
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
 
-        revealObserver.observe(element);
+                    entries.forEach(
+                        entry => {
 
-    });
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "visible"
+                                );
+
+                                revealObserver.unobserve(
+                                    entry.target
+                                );
+                            }
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+        revealElements.forEach(
+            element => {
+
+                revealObserver.observe(
+                    element
+                );
+            }
+        );
+    }
 
 
 
     /* =====================================================
-       07 — STAGGER CARD ANIMATION
+       07 — ACTIVE NAVIGATION
     ===================================================== */
-
-    const cardGroups = [
-
-        ".interest-card",
-
-        ".project-card",
-
-        ".skill-row"
-
-    ];
-
-
-    cardGroups.forEach(selector => {
-
-        const cards =
-            document.querySelectorAll(selector);
-
-
-        cards.forEach((card, index) => {
-
-            card.style.transitionDelay =
-                `${index * 0.08}s`;
-
-        });
-
-    });
-
-
-
-    /* =====================================================
-       08 — ACTIVE NAVIGATION
-    ===================================================== */
-
-    const sections =
-        document.querySelectorAll("section[id]");
-
 
     function updateActiveNav() {
 
         let currentSection = "";
 
-
         sections.forEach(section => {
 
             const sectionTop =
-                section.offsetTop - 180;
-
-            const sectionHeight =
-                section.offsetHeight;
-
+                section.offsetTop;
 
             if (
-                window.scrollY >= sectionTop &&
-                window.scrollY <
-                sectionTop + sectionHeight
+                window.scrollY >=
+                sectionTop - 180
             ) {
 
                 currentSection =
-                    section.getAttribute("id");
-
+                    section.getAttribute(
+                        "id"
+                    );
             }
-
         });
 
+        navItems.forEach(link => {
 
-        navLinks.forEach(link => {
+            link.classList.remove(
+                "active"
+            );
 
-            link.classList.remove("active");
-
-
-            const target =
-                link.getAttribute("href");
-
+            const href =
+                link.getAttribute(
+                    "href"
+                );
 
             if (
-                target ===
-                `#${currentSection}`
+                href ===
+                "#" + currentSection
             ) {
 
-                link.classList.add("active");
-
+                link.classList.add(
+                    "active"
+                );
             }
-
         });
-
     }
-
 
     window.addEventListener(
         "scroll",
         updateActiveNav
     );
 
-
     updateActiveNav();
 
 
 
     /* =====================================================
-       09 — BACK TO TOP
+       08 — BACK TO TOP
     ===================================================== */
 
-    const backToTop =
-        document.getElementById("backToTop");
+    function handleBackTop() {
 
-
-    function handleBackToTop() {
+        if (!backTop) return;
 
         if (window.scrollY > 600) {
 
-            backToTop.classList.add("show");
+            backTop.classList.add(
+                "show"
+            );
 
         } else {
 
-            backToTop.classList.remove("show");
-
+            backTop.classList.remove(
+                "show"
+            );
         }
-
     }
-
 
     window.addEventListener(
         "scroll",
-        handleBackToTop
+        handleBackTop
     );
 
+    handleBackTop();
 
-    backToTop.addEventListener(
-        "click",
-        () => {
 
-            window.scrollTo({
+    if (backTop) {
 
-                top: 0,
+        backTop.addEventListener(
+            "click",
+            () => {
 
-                behavior: "smooth"
-
-            });
-
-        }
-    );
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
+        );
+    }
 
 
 
     /* =====================================================
-       10 — SMOOTH INTERNAL LINKS
+       09 — SMOOTH NAVIGATION
     ===================================================== */
 
     document
-        .querySelectorAll('a[href^="#"]')
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
         .forEach(link => {
 
             link.addEventListener(
                 "click",
-                function(event) {
+                event => {
 
                     const targetId =
-                        this.getAttribute(
+                        link.getAttribute(
                             "href"
                         );
 
-
                     if (
-                        targetId === "#" ||
-                        !targetId
-                    ) {
-
-                        return;
-
-                    }
-
+                        !targetId ||
+                        targetId === "#"
+                    ) return;
 
                     const target =
                         document.querySelector(
                             targetId
                         );
 
+                    if (!target) return;
 
-                    if (target) {
+                    event.preventDefault();
 
-                        event.preventDefault();
+                    const offset = 75;
 
+                    const targetPosition =
+                        target.getBoundingClientRect()
+                            .top +
+                        window.scrollY -
+                        offset;
 
-                        target.scrollIntoView({
-
-                            behavior: "smooth",
-
-                            block: "start"
-
-                        });
-
-                    }
-
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
                 }
             );
-
         });
 
 
 
     /* =====================================================
-       11 — ROCKET PARALLAX
+       10 — ROCKET MOUSE INTERACTION
     ===================================================== */
 
-    const rocketScene =
+    if (
+        rocketWrap &&
+        window.matchMedia(
+            "(pointer:fine)"
+        ).matches
+    ) {
+
+        document.addEventListener(
+            "mousemove",
+            event => {
+
+                const x =
+                    (
+                        event.clientX /
+                        window.innerWidth
+                    ) - 0.5;
+
+                const y =
+                    (
+                        event.clientY /
+                        window.innerHeight
+                    ) - 0.5;
+
+                const moveX =
+                    x * 18;
+
+                const moveY =
+                    y * 18;
+
+                rocketWrap.style.transform =
+                    `translate(${moveX}px, ${moveY}px)`;
+            }
+        );
+
+        document.addEventListener(
+            "mouseleave",
+            () => {
+
+                rocketWrap.style.transform =
+                    "";
+            }
+        );
+    }
+
+
+
+    /* =====================================================
+       11 — FLOATING CARD PARALLAX
+    ===================================================== */
+
+    const floatCards =
+        document.querySelectorAll(
+            ".float-card"
+        );
+
+    if (
+        floatCards.length &&
+        window.matchMedia(
+            "(pointer:fine)"
+        ).matches
+    ) {
+
+        document.addEventListener(
+            "mousemove",
+            event => {
+
+                const x =
+                    (
+                        event.clientX /
+                        window.innerWidth
+                    ) - 0.5;
+
+                const y =
+                    (
+                        event.clientY /
+                        window.innerHeight
+                    ) - 0.5;
+
+                floatCards.forEach(
+                    (card, index) => {
+
+                        const strength =
+                            (index + 1) * 5;
+
+                        card.style.marginLeft =
+                            `${x * strength}px`;
+
+                        card.style.marginTop =
+                            `${y * strength}px`;
+                    }
+                );
+            }
+        );
+    }
+
+
+
+    /* =====================================================
+       12 — PROJECT MODAL
+    ===================================================== */
+
+    const modal =
+        document.querySelector(".modal");
+
+    const modalClose =
+        document.querySelector(".modal-close");
+
+    const modalTitle =
         document.querySelector(
-            ".rocket-scene"
+            ".modal-box h2"
+        );
+
+    const modalDescription =
+        document.querySelector(
+            ".modal-box p"
+        );
+
+    const modalTags =
+        document.querySelector(
+            ".modal-tags"
+        );
+
+    const projectButtons =
+        document.querySelectorAll(
+            ".project-btn"
         );
 
 
-    window.addEventListener(
-        "scroll",
-        () => {
+    const projectData = [
 
-            if (!rocketScene) return;
+        {
+            title:
+                "Student Learning Platform",
+
+            description:
+                "A modern learning concept designed for students to explore notes, programming resources, quizzes and useful study materials in one clean digital space.",
+
+            tags: [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Education"
+            ]
+        },
+
+        {
+            title:
+                "Interactive Quiz System",
+
+            description:
+                "A responsive quiz experience with questions, timer, score calculation and an engaging interface designed especially for students.",
+
+            tags: [
+                "JavaScript",
+                "Quiz",
+                "UI/UX",
+                "Responsive"
+            ]
+        },
+
+        {
+            title:
+                "Creative Web Experience",
+
+            description:
+                "A premium experimental web interface focused on clean visuals, smooth animations and modern user experience.",
+
+            tags: [
+                "Web Design",
+                "Animation",
+                "UI/UX"
+            ]
+        },
+
+        {
+            title:
+                "College Management Concept",
+
+            description:
+                "A future-focused college management concept designed to connect students, teachers, learning resources and college information through one platform.",
+
+            tags: [
+                "Management",
+                "Education",
+                "Web App",
+                "UX"
+            ]
+        }
+
+    ];
 
 
-            const scrollValue =
-                window.scrollY;
+    function openProject(index) {
+
+        if (!modal) return;
+
+        const data =
+            projectData[index];
+
+        if (!data) return;
+
+        if (modalTitle) {
+
+            modalTitle.textContent =
+                data.title;
+        }
+
+        if (modalDescription) {
+
+            modalDescription.textContent =
+                data.description;
+        }
+
+        if (modalTags) {
+
+            modalTags.innerHTML =
+                data.tags
+                    .map(
+                        tag =>
+                            `<span>${tag}</span>`
+                    )
+                    .join("");
+        }
+
+        modal.classList.add("show");
+
+        body.style.overflow = "hidden";
+    }
 
 
-            if (scrollValue < 900) {
+    projectButtons.forEach(
+        (button, index) => {
 
-                rocketScene.style.transform =
-                    `translateY(${scrollValue * 0.08}px)`;
+            button.addEventListener(
+                "click",
+                () => {
 
+                    openProject(index);
+                }
+            );
+        }
+    );
+
+
+    function closeProject() {
+
+        if (!modal) return;
+
+        modal.classList.remove(
+            "show"
+        );
+
+        body.style.overflow = "";
+    }
+
+
+    if (modalClose) {
+
+        modalClose.addEventListener(
+            "click",
+            closeProject
+        );
+    }
+
+
+    if (modal) {
+
+        modal.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target === modal
+                ) {
+
+                    closeProject();
+                }
             }
+        );
+    }
 
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeProject();
+            }
         }
     );
 
 
 
     /* =====================================================
-       12 — MOUSE MOVEMENT EFFECT
+       13 — CONTACT INTERACTION
     ===================================================== */
 
-    const heroVisual =
+    const contactBtn =
         document.querySelector(
-            ".hero-visual"
+            ".contact-btn"
+        );
+
+    const connectMessage =
+        document.querySelector(
+            ".connect-message"
         );
 
 
-    if (
-        heroVisual &&
-        window.innerWidth > 800
-    ) {
+    if (contactBtn) {
 
-        heroVisual.addEventListener(
-            "mousemove",
-            (event) => {
-
-                const rect =
-                    heroVisual.getBoundingClientRect();
-
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const moveX =
-                    (x - centerX) / 35;
-
-
-                const moveY =
-                    (y - centerY) / 35;
-
-
-                rocketScene.style.transform =
-                    `translate(${moveX}px, ${moveY}px)`;
-
-            }
-        );
-
-
-        heroVisual.addEventListener(
-            "mouseleave",
+        contactBtn.addEventListener(
+            "click",
             () => {
 
-                rocketScene.style.transform =
-                    "translate(0,0)";
+                if (connectMessage) {
 
+                    connectMessage.classList.add(
+                        "show"
+                    );
+
+                    connectMessage.textContent =
+                        "Thanks for visiting my portfolio. Let's connect and build something amazing.";
+                }
+
+                contactBtn.style.transform =
+                    "scale(.97)";
+
+                setTimeout(() => {
+
+                    contactBtn.style.transform =
+                        "";
+
+                }, 150);
             }
         );
-
     }
 
 
 
     /* =====================================================
-       13 — PROJECT CARD TILT
+       14 — 3D TILT EFFECT
     ===================================================== */
 
-    const projectCards =
+    const tiltCards =
         document.querySelectorAll(
-            ".project-card"
+            ".interest-card, .project"
         );
 
 
-    if (window.innerWidth > 800) {
+    if (
+        window.matchMedia(
+            "(pointer:fine)"
+        ).matches
+    ) {
 
-        projectCards.forEach(card => {
+        tiltCards.forEach(card => {
 
             card.addEventListener(
                 "mousemove",
@@ -624,41 +853,35 @@ document.addEventListener("DOMContentLoaded", () => {
                     const rect =
                         card.getBoundingClientRect();
 
-
                     const x =
                         event.clientX -
                         rect.left;
-
 
                     const y =
                         event.clientY -
                         rect.top;
 
-
                     const centerX =
                         rect.width / 2;
-
 
                     const centerY =
                         rect.height / 2;
 
-
                     const rotateX =
-                        ((y - centerY) /
-                            centerY) * -2;
-
+                        (
+                            y - centerY
+                        ) / 25;
 
                     const rotateY =
-                        ((x - centerX) /
-                            centerX) * 2;
-
+                        (
+                            centerX - x
+                        ) / 25;
 
                     card.style.transform =
                         `perspective(900px)
                          rotateX(${rotateX}deg)
                          rotateY(${rotateY}deg)
-                         translateY(-8px)`;
-
+                         translateY(-6px)`;
                 }
             );
 
@@ -669,412 +892,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     card.style.transform =
                         "";
-
                 }
             );
-
         });
-
     }
 
 
 
     /* =====================================================
-       14 — SKILL NUMBER COUNTER
+       15 — SKILL COUNTER
     ===================================================== */
 
     const skillNumbers =
         document.querySelectorAll(
-            ".skill-row strong"
+            ".skill-info > span"
         );
 
+    skillNumbers.forEach(
+        number => {
 
-    const skillSection =
-        document.querySelector(
-            "#skills"
-        );
-
-
-    let skillsAnimated = false;
-
-
-    function animateSkillNumbers() {
-
-        if (!skillSection) return;
-
-
-        const rect =
-            skillSection.getBoundingClientRect();
-
-
-        if (
-            rect.top <
-            window.innerHeight * .75 &&
-            !skillsAnimated
-        ) {
-
-            skillsAnimated = true;
-
-
-            skillNumbers.forEach(number => {
-
-                const finalValue =
-                    parseInt(
-                        number.textContent
-                    );
-
-
-                let current = 0;
-
-
-                const interval =
-                    setInterval(
-                        () => {
-
-                            current += 1;
-
-
-                            number.textContent =
-                                `${current}%`;
-
-
-                            if (
-                                current >=
-                                finalValue
-                            ) {
-
-                                clearInterval(
-                                    interval
-                                );
-
-                            }
-
-                        },
-                        12
-                    );
-
-            });
-
-        }
-
-    }
-
-
-    window.addEventListener(
-        "scroll",
-        animateSkillNumbers
-    );
-
-
-    animateSkillNumbers();
-
-
-
-    /* =====================================================
-       15 — CURSOR GLOW
-    ===================================================== */
-
-    const cursorGlow =
-        document.createElement("div");
-
-
-    cursorGlow.className =
-        "cursor-glow";
-
-
-    document.body.appendChild(
-        cursorGlow
-    );
-
-
-    const cursorStyle =
-        document.createElement("style");
-
-
-    cursorStyle.textContent = `
-
-        .cursor-glow {
-
-            position: fixed;
-
-            width: 180px;
-
-            height: 180px;
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(120,120,120,.10),
-                    transparent 70%
+            const value =
+                parseInt(
+                    number.textContent
                 );
-
-            transform:
-                translate(-50%,-50%);
-
-            z-index: 9998;
-
-            opacity: 0;
-
-            transition:
-                opacity .3s ease;
-
-        }
-
-        @media (max-width: 800px) {
-
-            .cursor-glow {
-
-                display: none;
-
-            }
-
-        }
-
-    `;
-
-
-    document.head.appendChild(
-        cursorStyle
-    );
-
-
-    if (window.innerWidth > 800) {
-
-        document.addEventListener(
-            "mousemove",
-            event => {
-
-                cursorGlow.style.left =
-                    `${event.clientX}px`;
-
-                cursorGlow.style.top =
-                    `${event.clientY}px`;
-
-                cursorGlow.style.opacity =
-                    "1";
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       16 — BUTTON RIPPLE EFFECT
-    ===================================================== */
-
-    const buttons =
-        document.querySelectorAll(
-            ".primary-btn, .secondary-btn, .contact-button"
-        );
-
-
-    buttons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            function(event) {
-
-                const ripple =
-                    document.createElement(
-                        "span"
-                    );
-
-
-                ripple.className =
-                    "button-ripple";
-
-
-                const rect =
-                    button.getBoundingClientRect();
-
-
-                const size =
-                    Math.max(
-                        rect.width,
-                        rect.height
-                    );
-
-
-                ripple.style.width =
-                    `${size}px`;
-
-                ripple.style.height =
-                    `${size}px`;
-
-                ripple.style.left =
-                    `${event.clientX - rect.left - size / 2}px`;
-
-                ripple.style.top =
-                    `${event.clientY - rect.top - size / 2}px`;
-
-
-                button.appendChild(
-                    ripple
-                );
-
-
-                setTimeout(
-                    () => {
-
-                        ripple.remove();
-
-                    },
-                    600
-                );
-
-            }
-        );
-
-    });
-
-
-    const rippleStyle =
-        document.createElement("style");
-
-
-    rippleStyle.textContent = `
-
-        .primary-btn,
-        .secondary-btn,
-        .contact-button {
-
-            position: relative;
-
-            overflow: hidden;
-
-        }
-
-        .button-ripple {
-
-            position: absolute;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.18);
-
-            transform:
-                scale(0);
-
-            animation:
-                rippleAnimation .6s linear;
-
-            pointer-events: none;
-
-        }
-
-        @keyframes rippleAnimation {
-
-            to {
-
-                transform: scale(2.5);
-
-                opacity: 0;
-
-            }
-
-        }
-
-    `;
-
-
-    document.head.appendChild(
-        rippleStyle
-    );
-
-
-
-    /* =====================================================
-       17 — IMAGE LOAD EFFECT
-    ===================================================== */
-
-    const profilePhoto =
-        document.querySelector(
-            ".profile-photo"
-        );
-
-
-    if (profilePhoto) {
-
-        profilePhoto.addEventListener(
-            "load",
-            () => {
-
-                profilePhoto.classList.add(
-                    "loaded"
-                );
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       18 — CLOSE MOBILE MENU OUTSIDE CLICK
-    ===================================================== */
-
-    document.addEventListener(
-        "click",
-        event => {
 
             if (
-                navMenu.classList.contains("open") &&
-                !navMenu.contains(event.target) &&
-                !menuToggle.contains(event.target)
-            ) {
+                Number.isNaN(value)
+            ) return;
 
-                navMenu.classList.remove(
-                    "open"
-                );
-
-            }
-
-        }
-    );
-
-
-
-    /* =====================================================
-       19 — ESCAPE KEY
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Escape") {
-
-                navMenu.classList.remove(
-                    "open"
-                );
-
-            }
-
-        }
-    );
-
-
-
-    /* =====================================================
-       20 — CONSOLE MESSAGE
-    ===================================================== */
-
-    console.log(
-        "%c🚀 Shambhu Khatri Portfolio",
-        "font-size:18px;font-weight:bold;"
-    );
-
-    console.log(
-        "%cBuilt with HTML • CSS • JavaScript",
-        "font-size:12px;"
-    );
-
-});
+            number.dataset.value =
+                value;
